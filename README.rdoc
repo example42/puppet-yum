@@ -1,0 +1,73 @@
+= Puppet module: yum
+
+This is a Puppet module that manages Yum repositories for Centos RedHat and Scientific Linux
+
+Made by Alessandro Franceschi / Lab42
+
+Inspired by the Yum Immerda module: https://git.puppet.immerda.ch
+
+Official site: http://www.example42.com
+
+Official git repository: http://github.com/example42/puppet-yum
+
+Released under the terms of Apache 2 License.
+
+This module requires functions provided by the Example42 Puppi module.
+
+== USAGE 
+
+* Just leave the default options: Automatic detection of Operating System (RedHat, Centos, Scientific supported) Epel repo installation, keeping of local yum files, automatic updates disabled.
+
+        class { "yum:"
+        }
+
+* Enable automatic updates via cron (updatesd is supported only on 5)
+
+        class { "yum:"
+          update => 'cron',
+        }
+
+
+* Purge local /etc/yum.repos.d/ and enforce its contents only via Puppet
+
+        class { "yum:"
+          clean_repos => true,
+        }
+
+* Enable EPEL and PuppetLabs repos
+
+        class { "yum:"
+          extrarepo => [ 'epel' , 'puppetlabs' ],
+        }
+
+
+* Do no include any repo 
+
+        class { "yum:"
+          extrarepo => '' ,
+        }
+
+
+
+* Automaticallly include a custom subclass
+
+        class { "yum:"
+          my_class => 'yum::example42',
+        }
+
+
+== OPERATING SYSTEMS SUPPORT
+
+REDHAT 6 - Full
+
+REDHAT 5 - Full
+
+REDHAT 4 - Partial
+
+CENTOS 6 - Full
+
+CENTOS 5 - Full
+
+CENTOS 4 - Partial
+
+SCIENTIFIC 6 - Full
