@@ -8,8 +8,9 @@ class yum::cron {
   }
 
   service { yum-cron:
-    enable     => true,
-    ensure     => running,
+    ensure     => $yum::manage_service_ensure,
+    name       => $yum::service,
+    enable     => $yum::manage_service_enable,
     hasstatus  => true,
     hasrestart => true,
     require    => Package['yum-cron'],

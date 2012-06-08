@@ -49,10 +49,53 @@ This module requires functions provided by the Example42 Puppi module.
 
 
 
-* Automaticallly include a custom subclass
+== USAGE - Overrides and Customizations
+* Enable auditing without without making changes on existing yum configuration files
 
-        class { "yum:"
+        class { 'yum':
+          audit_only => true
+        }
+
+
+* Use custom sources for main config file
+
+        class { 'yum':
+          source => [ "puppet:///modules/lab42/yum/yum.conf-${hostname}" , "puppet:///modules/lab42/yum/yum.conf" ],
+        }
+
+
+* Use custom source directory for the whole configuration dir
+
+        class { 'yum':
+          source_dir       => 'puppet:///modules/lab42/yum/conf/',
+          source_dir_purge => false, # Set to true to purge any existing file not present in $source_dir
+        }
+
+* Use custom template for main config file. Note that template and source arguments are alternative.
+
+        class { 'yum':
+          template => 'example42/yum/yum.conf.erb',
+        }
+
+* Automatically include a custom subclass
+
+        class { 'yum':
           my_class => 'yum::example42',
+        }
+
+
+== USAGE - Example42 extensions management
+* Activate puppi (recommended, but disabled by default)
+
+        class { 'yum':
+          puppi    => true,
+        }
+
+* Activate puppi and use a custom puppi_helper template (to be provided separately with a puppi::helper define ) to customize the output of puppi commands
+
+        class { 'yum':
+          puppi        => true,
+          puppi_helper => 'myhelper',
         }
 
 

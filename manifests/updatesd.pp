@@ -13,14 +13,16 @@ class yum::updatesd {
   }
 
   service { 'yum-updatesd':
-    ensure  => running,
-    enable  => true,
-    require => Package['yum-updatesd'],
+    ensure     => $yum::manage_service_ensure,
+    enable     => $yum::manage_service_enable,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => Package['yum-updatesd'],
   }
 
-  file { 'yum-updatesd.con'":
+  file { 'yum-updatesd.conf'":
+    ensure  => $yum::manage_file,
     path    => "/etc/yum/yum-updatesd.conf",
-    ensure  => present,
     source  => 'puppet:///modules/yum/yum-updatesd.conf',
     require => Package['yum-updatesd'],
   }
