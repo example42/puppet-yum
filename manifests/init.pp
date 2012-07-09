@@ -210,7 +210,8 @@ class yum (
   
   if $yum::extrarepo =~ /epel/ { include yum::repo::epel }
   if $yum::extrarepo =~ /rpmforge/ { include yum::repo::rpmforge }
-  if $yum::extrarepo =~ /jpackage/ { include yum::repo::jpackage }
+  if $yum::extrarepo =~ /jpackage5/ { include yum::repo::jpackage5 }
+  if $yum::extrarepo =~ /jpackage6/ { include yum::repo::jpackage6 }
   if $yum::extrarepo =~ /remi/ { include yum::repo::remi }
   if $yum::extrarepo =~ /tmz/ and $osver[0] != "4" { include yum::repo::tmz }
   if $yum::extrarepo =~ /puppetlabs/ and $osver[0] != "4" { include yum::repo::puppetlabs }
