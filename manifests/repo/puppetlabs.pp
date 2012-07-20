@@ -1,8 +1,10 @@
 class yum::repo::puppetlabs {
 
+    require common
+
     yum::managed_yumrepo { puppetlabs:
         descr => 'Puppet Labs Packages',
-        baseurl => 'http://yum.puppetlabs.com/el/$releasever/products/$basearch',
+        baseurl => "http://yum.puppetlabs.com/el/$common::osver/products/\$basearch",
         enabled => 1,
         gpgcheck => 1,
         failovermethod => 'priority',
@@ -12,7 +14,7 @@ class yum::repo::puppetlabs {
 
     yum::managed_yumrepo { puppetlabs_dependencies:
         descr => 'Puppet Labs Packages',
-        baseurl => 'http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch',
+        baseurl => "http://yum.puppetlabs.com/el/$common::osver/dependencies/\$basearch",
         enabled => 1,
         gpgcheck => 1,
         failovermethod => 'priority',
