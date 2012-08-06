@@ -2,10 +2,8 @@ class yum::prerequisites {
 
   require yum
 
-  package { "yum-priorities":
-    name => $yum::packagename_yumpriority ,
-    ensure => present,
-  }
+  yum::plugin { 'priorities': }
+  yum::plugin { 'security': }
 
   # Purge /etc/yum.repos.d contents if yum_clean_repos is true
   file { 'yum_repos_d':

@@ -28,13 +28,13 @@
 #   Can be an array. Default: 'epel'
 #   (Epel is used by many modules)
 #
+# [*plugins_source_dir*]
+#   The path of the plugins configuration directory
+#
 # [*clean_repos*]
 #   Boolean. Defines if you want to cleanup the yum.repos.d dir
 #   and be sure that it contains only files managed by Puppet
 #   Default: false
-#
-# [*packagename_yumpriority*]
-#   Name of the yum priority plugin package.
 #
 # [*my_class*]
 #   Name of a custom class to autoload to manage module's customizations
@@ -125,8 +125,8 @@
 class yum (
   $update              = params_lookup( 'update' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
+  $plugins_source_dir  = params_lookup( 'plugins_source_dir' ),
   $clean_repos         = params_lookup( 'clean_repos' ),
-  $packagename_yumpriority = params_lookup( 'packagename_yumpriority' ),
   $my_class            = params_lookup( 'my_class' ),
   $source              = params_lookup( 'source' ),
   $source_dir          = params_lookup( 'source_dir' ),

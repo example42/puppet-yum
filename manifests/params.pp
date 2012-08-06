@@ -1,18 +1,12 @@
 class yum::params  {
 
-  $osver = split($::operatingsystemrelease, '[.]')
-
   $update = false
 
   $extrarepo = 'epel'
 
   $clean_repos = false
 
-  $packagename_yumpriority = $osver ? {
-    5       => 'yum-priorities',
-    6       => 'yum-plugin-priorities',
-    default => 'yum-plugin-priorities',
-  }
+  $plugins_config_dir = '/etc/yum/pluginconf.d'
 
   $config_dir = '/etc/yum'
 
