@@ -1,3 +1,7 @@
+# = Class: yum::repo::jpackage5
+#
+# This class installs the jpackage5 repo
+#
 class yum::repo::jpackage5 {
 
   include yum

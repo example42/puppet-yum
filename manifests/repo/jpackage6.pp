@@ -1,3 +1,7 @@
+# = Class: yum::repo::jpackage6
+#
+# This class installs the jpackage6 repo
+#
 class yum::repo::jpackage6 {
 
   yum::managed_yumrepo { 'jpackage':

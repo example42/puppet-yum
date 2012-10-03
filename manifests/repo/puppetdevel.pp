@@ -1,6 +1,10 @@
+# = Class: yum::repo::puppetdevel
+#
+# This class installs the puppetdevel repo
+#
 class yum::repo::puppetdevel {
 
-  yum::managed_yumrepo { puppetlabs_devel:
+  yum::managed_yumrepo { 'puppetlabs_devel':
     descr          => 'Puppet Labs Packages - Devel',
     baseurl        => 'http://yum.puppetlabs.com/el/$releasever/devel/$basearch',
     enabled        => 1,
@@ -10,7 +14,7 @@ class yum::repo::puppetdevel {
     priority       => 15,
   }
 
-  yum::managed_yumrepo { puppetlabs_dependencies:
+  yum::managed_yumrepo { 'puppetlabs_dependencies':
     descr          => 'Puppet Labs Packages - Dependencies',
     baseurl        => 'http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch',
     enabled        => 1,
