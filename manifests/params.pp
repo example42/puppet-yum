@@ -8,6 +8,10 @@ class yum::params  {
 
   $plugins_config_dir = '/etc/yum/pluginconf.d'
 
+  $source_repo_dir = ''
+
+  $repo_dir = '/etc/yum.repos.d'
+  
   $config_dir = '/etc/yum'
 
   $config_file = '/etc/yum.conf'
