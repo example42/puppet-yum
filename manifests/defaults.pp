@@ -3,8 +3,7 @@
 # This class manages default yum repositories for RedHat based distros:
 # RHEL, Centos, Scientific Linux
 #
-class yum::defaults {
-  ) inherits yum::params {
+class yum::defaults ( ) inherits yum::params {
 
   $osver = split($::operatingsystemrelease, '[.]')
 
