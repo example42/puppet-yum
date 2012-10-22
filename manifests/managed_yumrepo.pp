@@ -17,10 +17,10 @@ define yum::managed_yumrepo (
   file { "/etc/yum.repos.d/${name}.repo":
     ensure  => file,
     replace => false,
-    before  => Yumrepo[$name],
-    require => File["yum_repos_d"],
-    mode    => 0644,
-    owner   => root,
+    before  => Yumrepo[ $name ],
+    require => File[ 'yum_repos_d' ],
+    mode    => '0644',
+    owner   => 'root',
     group   => 0,
   }
 
@@ -35,13 +35,13 @@ define yum::managed_yumrepo (
     priority       => $priority,
     exclude        => $exclude,
     includepkgs    => $includepkgs,
-    require        => File["rpm_gpg"],
+    require        => File[ 'rpm_gpg' ],
   }
- 
+
   if $autokeyimport == 'yes' and $gpgkey != '' {
     exec { "rpmkey_add_${gpgkey}":
-      command     => "rpm --import $gpgkey",
-      before      => Yumrepo["$name"],
+      command     => "rpm --import ${gpgkey}",
+      before      => Yumrepo[ $name ],
       refreshonly => true,
     }
   }

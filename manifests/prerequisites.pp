@@ -2,10 +2,8 @@ class yum::prerequisites {
 
   require yum
 
-  package { "yum-priorities":
-    name => $yum::packagename_yumpriority ,
-    ensure => present,
-  }
+  yum::plugin { 'priorities': }
+  yum::plugin { 'security': }
 
   # Purge /etc/yum.repos.d contents if yum_clean_repos is true
   file { 'yum_repos_d':
@@ -24,7 +22,6 @@ class yum::prerequisites {
     group   => 0,
   }
 
-  #gpg key
   file { 'rpm_gpg':
     path   => '/etc/pki/rpm-gpg/',
     source => "puppet:///modules/yum/${operatingsystem}.${yum::osver[0]}/rpm-gpg/",
@@ -38,4 +35,5 @@ class yum::prerequisites {
     owner   => root,
     group   => 0,
   }
+
 }

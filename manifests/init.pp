@@ -1,7 +1,7 @@
 # = Class: yum
 #
 # This class manages yum repositories for RedHat based distros:
-# RHEL, Centos, Scientific Linux 
+# RHEL, Centos, Scientific Linux
 #
 # Copyright 2008, admin(at)immerda.ch
 # Copyright 2008, Puzzle ITC GmbH
@@ -28,13 +28,19 @@
 #   Can be an array. Default: 'epel'
 #   (Epel is used by many modules)
 #
+# [*plugins_source_dir*]
+#   The path of the plugins configuration directory
+#
+# [*repo_dir*]
+#   The path of the yum.repos.d directory
+#
+# [*source_repo_dir*]
+#   The source path to use to populate the yum.repos.d directory
+#
 # [*clean_repos*]
 #   Boolean. Defines if you want to cleanup the yum.repos.d dir
 #   and be sure that it contains only files managed by Puppet
 #   Default: false
-#
-# [*packagename_yumpriority*]
-#   Name of the yum priority plugin package.
 #
 # [*my_class*]
 #   Name of a custom class to autoload to manage module's customizations
@@ -125,8 +131,10 @@
 class yum (
   $update              = params_lookup( 'update' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
+  $plugins_source_dir  = params_lookup( 'plugins_source_dir' ),
+  $repo_dir            = params_lookup( 'repo_dir' ),
+  $source_repo_dir     = params_lookup( 'source_repo_dir' ),
   $clean_repos         = params_lookup( 'clean_repos' ),
-  $packagename_yumpriority = params_lookup( 'packagename_yumpriority' ),
   $my_class            = params_lookup( 'my_class' ),
   $source              = params_lookup( 'source' ),
   $source_dir          = params_lookup( 'source_dir' ),
@@ -157,7 +165,7 @@ class yum (
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
 
-  $osver = split($::operatingsystemrelease, '[.]') 
+  $osver = split($::operatingsystemrelease, '[.]')
 
   $manage_service_enable = $yum::bool_disableboot ? {
     true    => false,
@@ -205,37 +213,18 @@ class yum (
   }
 
 
-  if $yum::update == 'cron' { include yum::cron }
-  if $yum::update == 'updatesd' and $osver[0] == '5' { include yum::updatesd }
-  
-  if $yum::extrarepo =~ /epel/ { include yum::repo::epel }
-  if $yum::extrarepo =~ /rpmforge/ { include yum::repo::rpmforge }
-  if $yum::extrarepo =~ /jpackage5/ { include yum::repo::jpackage5 }
-  if $yum::extrarepo =~ /jpackage6/ { include yum::repo::jpackage6 }
-  if $yum::extrarepo =~ /remi/ { include yum::repo::remi }
-  if $yum::extrarepo =~ /tmz/ and $osver[0] != "4" { include yum::repo::tmz }
-  if $yum::extrarepo =~ /puppetlabs/ and $osver[0] != "4" { include yum::repo::puppetlabs }
-
-  case $operatingsystem {
-
-  centos: {
-    if $osver[0] == "6" { include yum::repo::centos6 }
-    if $osver[0] == "5" { include yum::repo::centos5 }
-    if $osver[0] == "4" { include yum::repo::centos4 }
-    if $yum::extrarepo =~ /centos-testing/ { include yum::repo::centos_testing }
-    if $yum::extrarepo =~ /karan/ { include yum::repo::karan }
-  }
-
-  redhat: {
-  }
-
-  scientific: {
-    include yum::repo::sl
-    if $yum::extrarepo =~ /centos-testing/ { include yum::repo::centos_testing }
-    if $yum::extrarepo =~ /karan/ { include yum::repo::karan }
-  }
-
-  default: { }
+  if $yum::source_repo_dir {
+    file { 'yum.repo_dir':
+      ensure  => directory,
+      path    => $yum::repo_dir,
+      source  => $yum::source_repo_dir,
+      recurse => true,
+      purge   => $yum::bool_clean_repos,
+      replace => $yum::manage_file_replace,
+      audit   => $yum::manage_audit,
+    }
+  } else {
+    include yum::defaults
   }
 
   # Yum Configuration file

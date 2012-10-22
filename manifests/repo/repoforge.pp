@@ -1,11 +1,11 @@
-# = Class: yum::repo::rpmforge
+# = Class: yum::repo::repoforge
 #
-# This class installs the rpmforce repo
+# This class installs the repoforge repo
 #
-class yum::repo::rpmforge {
+class yum::repo::repoforge {
 
-  yum::managed_yumrepo { 'rpmforge-rhel5':
-    descr    => 'RPMForge RHEL5 packages',
+  yum::managed_yumrepo { 'repoforge':
+    descr    => 'RepoForge packages',
     baseurl  => 'http://wftp.tu-chemnitz.de/pub/linux/dag/redhat/el$releasever/en/$basearch/dag',
     enabled  => 1,
     gpgcheck => 1,

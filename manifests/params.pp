@@ -6,12 +6,12 @@ class yum::params  {
 
   $clean_repos = false
 
-  $packagename_yumpriority = $yum::osver ? {
-    5       => 'yum-priorities',
-    6       => 'yum-plugin-priorities',
-    default => 'yum-plugin-priorities',
-  }
+  $plugins_config_dir = '/etc/yum/pluginconf.d'
 
+  $source_repo_dir = ''
+
+  $repo_dir = '/etc/yum.repos.d'
+  
   $config_dir = '/etc/yum'
 
   $config_file = '/etc/yum.conf'

@@ -28,10 +28,11 @@ This module requires functions provided by the Example42 Puppi module.
         }
 
 
-* Purge local /etc/yum.repos.d/ and enforce its contents only via Puppet
+* Purge local /etc/yum.repos.d/ and enforce its contents only via a custom source
 
         class { "yum:"
-          clean_repos => true,
+          source_repo_dir => 'puppet:///modules/example42/yum/conf/',
+          clean_repos     => true,
         }
 
 * Enable EPEL and PuppetLabs repos
