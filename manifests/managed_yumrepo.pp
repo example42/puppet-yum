@@ -18,7 +18,6 @@ define yum::managed_yumrepo (
     ensure  => file,
     replace => false,
     before  => Yumrepo[ $name ],
-    require => File[ 'yum_repos_d' ],
     mode    => '0644',
     owner   => 'root',
     group   => 0,
@@ -43,6 +42,7 @@ define yum::managed_yumrepo (
       command     => "rpm --import ${gpgkey}",
       before      => Yumrepo[ $name ],
       refreshonly => true,
+      path        => '/sbin:/bin:/usr/sbin:/usr/bin',
     }
   }
 }

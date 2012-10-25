@@ -5,23 +5,6 @@ class yum::prerequisites {
   yum::plugin { 'priorities': }
   yum::plugin { 'security': }
 
-  # Purge /etc/yum.repos.d contents if yum_clean_repos is true
-  file { 'yum_repos_d':
-    path  => '/etc/yum.repos.d/',
-    source  => "puppet:///modules/yum/empty",
-    ensure  => directory,
-    recurse => true,
-    purge   => $yum::bool_clean_repos ? {
-      true  => true,
-      false => false,
-    },
-    force   => true,
-    ignore  => '.svn',
-    mode    => 0755,
-    owner   => root,
-    group   => 0,
-  }
-
   file { 'rpm_gpg':
     path   => '/etc/pki/rpm-gpg/',
     source => "puppet:///modules/yum/${operatingsystem}.${yum::osver[0]}/rpm-gpg/",
