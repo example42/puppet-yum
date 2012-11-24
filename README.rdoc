@@ -53,14 +53,14 @@ This module requires functions provided by the Example42 Puppi module.
 == USAGE - Overrides and Customizations
 * Enable auditing without without making changes on existing yum configuration files
 
-        class { "yum":
+        class { 'yum':
           audit_only => true
         }
 
 
 * Use custom sources for main config file
 
-        class { "yum":
+        class { 'yum':
           source => [ "puppet:///modules/lab42/yum/yum.conf-${hostname}" , "puppet:///modules/lab42/yum/yum.conf" ],
         }
 
