@@ -17,7 +17,7 @@ class yum::repo::epel {
   yum::managed_yumrepo { 'epel-debuginfo':
     descr          => 'Extra Packages for Enterprise Linux $releasever - $basearch - Debug',
     mirrorlist     => 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&arch=$basearch',
-    enabled        => 1,
+    enabled        => 0,
     gpgcheck       => 1,
     failovermethod => 'priority',
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL',
@@ -27,7 +27,7 @@ class yum::repo::epel {
   yum::managed_yumrepo { 'epel-source':
     descr          => 'Extra Packages for Enterprise Linux $releasever - $basearch - Source',
     mirrorlist     => 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-source-$releasever&arch=$basearch',
-    enabled        => 1,
+    enabled        => 0,
     gpgcheck       => 1,
     failovermethod => 'priority',
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL',
