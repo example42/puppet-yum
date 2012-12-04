@@ -115,3 +115,5 @@ CENTOS 5 - Full
 CENTOS 4 - Partial
 
 SCIENTIFIC 6 - Full
+
+AMAZON LINUX 3 (Sigh) - Partial
