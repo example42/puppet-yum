@@ -4,9 +4,14 @@
 #
 class yum::repo::puppetlabs {
 
+  $release = $::operatingsystem ? {
+    /(?i:Centos|RedHat)/ => $yum::osver[0],
+    default              => '6',
+  }
+
   yum::managed_yumrepo { puppetlabs:
     descr => 'Puppet Labs Packages',
-    baseurl => "http://yum.puppetlabs.com/el/${yum::osver[0]}/products/\$basearch",
+    baseurl => "http://yum.puppetlabs.com/el/${release}/products/\$basearch",
     enabled => 1,
     gpgcheck => 1,
     failovermethod => 'priority',
@@ -19,7 +24,7 @@ class yum::repo::puppetlabs {
   #
   yum::managed_yumrepo { puppetlabs_dependencies:
     descr => 'Puppet Labs Packages',
-    baseurl => "http://yum.puppetlabs.com/el/${yum::osver[0]}/dependencies/\$basearch",
+    baseurl => "http://yum.puppetlabs.com/el/${release}/dependencies/\$basearch",
     enabled => 1,
     gpgcheck => 1,
     failovermethod => 'priority',
