@@ -6,11 +6,12 @@ class yum::repo::repoforge {
 
   yum::managed_yumrepo { 'repoforge':
     descr    => 'RepoForge packages',
-    baseurl  => 'http://wftp.tu-chemnitz.de/pub/linux/dag/redhat/el$releasever/en/$basearch/dag',
+    baseurl  => 'http://apt.sw.be/redhat/el$releasever/en/$basearch/rpmforge',
     enabled  => 1,
     gpgcheck => 1,
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
-    priority => 30,
+    priority => 1,
+    exclude  => '*nrpe*',
   }
 
 }
