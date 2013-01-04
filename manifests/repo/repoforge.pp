@@ -11,7 +11,7 @@ class yum::repo::repoforge {
     gpgcheck => 1,
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
     priority => 1,
-    exclude  => '*nrpe*',
+    exclude  => 'nagios-*',
   }
 
 }
