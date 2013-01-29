@@ -8,7 +8,7 @@ class yum::repo::atomic {
     mirrorlist => 'http://www.atomicorp.com/mirrorlist/atomic/centos-$releasever-$basearch',
     enabled    => 1,
     gpgcheck   => 1,
-    gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY.art.txt',
+    gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY.art',
     priority   => 1,
   }
 }
