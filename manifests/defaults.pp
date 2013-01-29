@@ -29,6 +29,7 @@ class yum::defaults ( ) inherits yum::params {
       if $osver[0] == "4" { include yum::repo::centos4 }
       if $yum::extrarepo =~ /centos-testing/ { include yum::repo::centos_testing }
       if $yum::extrarepo =~ /karan/ { include yum::repo::karan }
+      if $yum::extrarepo =~ /atomic/ { include yum::repo::atomic }
     }
 
     redhat: {
