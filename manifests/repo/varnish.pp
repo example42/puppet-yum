@@ -4,7 +4,7 @@
 #
 class yum::repo::varnish {
 
-  yum::managed_yumrepo { 'varnish-3.0':
+  yum::managed_yumrepo { 'varnish':
     descr          => 'Varnish 3.0 for Enterprise Linux 5 - $basearch',
     baseurl        => 'http://repo.varnish-cache.org/redhat/varnish-3.0/el5/$basearch',
     enabled        => 1,
