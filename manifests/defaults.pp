@@ -20,6 +20,7 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::extrarepo =~ /mongodb/ and $osver[0] != "4" { include yum::repo::mongodb }
   if $yum::extrarepo =~ /repoforge/ { include yum::repo::repoforge }
   if $yum::extrarepo =~ /repoforgeextras/ { include yum::repo::repoforgeextras }
+  if $yum::extrarepo =~ /atomic/ { include yum::repo::atomic }
   if $yum::extrarepo =~ /varnish/ { include yum::repo::varnish }
 
   case $operatingsystem {
