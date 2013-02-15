@@ -2,6 +2,8 @@ class yum::params  {
 
   $update = false
 
+  $defaultrepo = true
+
   $extrarepo = 'epel'
 
   $clean_repos = false

@@ -23,10 +23,16 @@
 #   updatesd - Updates via updatesd (Only on Centos/RedHat/SL 5)
 #   false/no - Automatic updates disabled (Default)
 #
+# [*defaultrepo*]
+#   If you want to enable default repositories for supported OS
+#   Default: true
+#   Note: This variable is ignored if you provide a custom source_repo_dir
+#
 # [*extrarepo*]
 #   If you want to enable some (supported) extra repositories
 #   Can be an array. Default: 'epel'
 #   (Epel is used by many modules)
+#   Note: This variable is ignored if you provide a custom source_repo_dir
 #
 # [*plugins_source_dir*]
 #   The path of the plugins configuration directory
@@ -130,6 +136,7 @@
 #
 class yum (
   $update              = params_lookup( 'update' ),
+  $defaultrepo         = params_lookup( 'defaultrepo' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
   $plugins_source_dir  = params_lookup( 'plugins_source_dir' ),
   $repo_dir            = params_lookup( 'repo_dir' ),
@@ -156,6 +163,7 @@ class yum (
   $log_file            = params_lookup( 'log_file' )
   ) inherits yum::params {
 
+  $bool_defaultrepo=any2bool($defaultrepo)
   $bool_clean_repos=any2bool($clean_repos)
   $bool_source_dir_purge=any2bool($source_dir_purge)
   $bool_absent=any2bool($absent)
