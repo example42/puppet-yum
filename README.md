@@ -1,4 +1,4 @@
-= Puppet module: yum
+# Puppet module: yum
 
 This is a Puppet module that manages Yum repositories for Centos RedHat and Scientific Linux
 
@@ -14,7 +14,7 @@ Released under the terms of Apache 2 License.
 
 This module requires functions provided by the Example42 Puppi module.
 
-== USAGE 
+## USAGE 
 
 * Just leave the default options: Automatic detection of Operating System (RedHat, Centos, Scientific supported) Epel repo installation, keeping of local yum files, automatic updates disabled.
 
@@ -50,7 +50,7 @@ This module requires functions provided by the Example42 Puppi module.
 
 
 
-== USAGE - Overrides and Customizations
+## USAGE - Overrides and Customizations
 * Enable auditing without without making changes on existing yum configuration files
 
         class { 'yum':
@@ -85,7 +85,7 @@ This module requires functions provided by the Example42 Puppi module.
         }
 
 
-== USAGE - Example42 extensions management
+## USAGE - Example42 extensions management
 * Activate puppi (recommended, but disabled by default)
 
         class { 'yum':
@@ -100,7 +100,7 @@ This module requires functions provided by the Example42 Puppi module.
         }
 
 
-== OPERATING SYSTEMS SUPPORT
+## OPERATING SYSTEMS SUPPORT
 
 REDHAT 6 - Full
 
