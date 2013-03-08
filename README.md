@@ -117,3 +117,5 @@ CENTOS 4 - Partial
 SCIENTIFIC 6 - Full
 
 AMAZON LINUX 3 (Sigh) - Partial
+
+[![Build Status](https://travis-ci.org/example42/puppet-yum.png?branch=master)](https://travis-ci.org/example42/puppet-yum)
