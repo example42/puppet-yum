@@ -220,18 +220,17 @@ class yum (
     default   => template($yum::template),
   }
 
+  file { 'yum.repo_dir':
+    ensure  => directory,
+    path    => $yum::repo_dir,
+    source  => $yum::source_repo_dir,
+    recurse => true,
+    purge   => $yum::bool_clean_repos,
+    replace => $yum::manage_file_replace,
+    audit   => $yum::manage_audit,
+  }
 
-  if $yum::source_repo_dir {
-    file { 'yum.repo_dir':
-      ensure  => directory,
-      path    => $yum::repo_dir,
-      source  => $yum::source_repo_dir,
-      recurse => true,
-      purge   => $yum::bool_clean_repos,
-      replace => $yum::manage_file_replace,
-      audit   => $yum::manage_audit,
-    }
-  } else {
+  if $yum::source_repo_dir == undef {
     include yum::defaults
   }
 

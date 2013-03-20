@@ -10,7 +10,7 @@ class yum::params  {
 
   $plugins_config_dir = '/etc/yum/pluginconf.d'
 
-  $source_repo_dir = ''
+  $source_repo_dir = undef
 
   $repo_dir = '/etc/yum.repos.d'
   
