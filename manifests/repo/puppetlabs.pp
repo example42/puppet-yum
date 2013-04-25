@@ -3,9 +3,9 @@
 # This class installs the puppetlabs repo
 #
 class yum::repo::puppetlabs {
-
+  $osver = split($::operatingsystemrelease, '[.]')
   $release = $::operatingsystem ? {
-    /(?i:Centos|RedHat)/ => $yum::osver[0],
+    /(?i:Centos|RedHat)/ => $osver[0],
     default              => '6',
   }
 
@@ -29,7 +29,7 @@ class yum::repo::puppetlabs {
     gpgcheck => 1,
     failovermethod => 'priority',
     gpgkey => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
-    priority => 1, 
+    priority => 1,
   }
 
 }
