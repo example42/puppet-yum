@@ -11,7 +11,7 @@ class yum::repo::foreman {
     gpgcheck       => 0,
     failovermethod => 'priority',
     # gpgkey       => 'http://yum.theforeman.org/RPM-GPG-KEY-foreman',
-    priority       => 26,
+    priority       => 1,
   }
 
 }
