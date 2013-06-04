@@ -13,6 +13,7 @@ class yum::repo::webtatic {
     enabled     => 1,
     gpgcheck    => 1,
     gpgkey      => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-webtatic-andy',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-webtatic-andy',
     priority    => 1,
   }
 }

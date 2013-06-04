@@ -1,5 +1,7 @@
 class yum::params  {
 
+  $install_all_keys = false
+
   $update = false
 
   $defaultrepo = true

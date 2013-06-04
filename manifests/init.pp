@@ -17,6 +17,10 @@
 #
 # == Parameters
 #
+# [*install_all_keys*]
+#   If to provide all the module's known rpm gpgp keys.
+#   Default true, set to false to keep backwards compatibility
+#
 # [*update*]
 #   If you want yum automatic updates. Possibile values:
 #   cron - Updates in a cronjob
@@ -135,6 +139,7 @@
 #   Log file(s). Used by puppi
 #
 class yum (
+  $install_all_keys    = params_lookup( 'install_all_keys' ),
   $update              = params_lookup( 'update' ),
   $defaultrepo         = params_lookup( 'defaultrepo' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
@@ -163,6 +168,7 @@ class yum (
   $log_file            = params_lookup( 'log_file' )
   ) inherits yum::params {
 
+  $bool_install_all_keys=any2bool($install_all_keys)
   $bool_defaultrepo=any2bool($defaultrepo)
   $bool_clean_repos=any2bool($clean_repos)
   $bool_source_dir_purge=any2bool($source_dir_purge)

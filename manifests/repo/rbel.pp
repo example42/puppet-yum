@@ -12,6 +12,7 @@ class yum::repo::rbel {
     gpgcheck       => 0,
     failovermethod => 'priority',
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-RBEL' ,
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-RBEL',
     priority       => 16,
   }
 

@@ -11,6 +11,7 @@ class yum::repo::epel {
     gpgcheck       => 1,
     failovermethod => 'priority',
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL',
+    gpgkey_source  => "puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-EPEL-${yum::osver[0]}",
     priority       => 16,
   }
 

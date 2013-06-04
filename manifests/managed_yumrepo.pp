@@ -5,6 +5,8 @@ define yum::managed_yumrepo (
   $enabled        = 0,
   $gpgcheck       = 0,
   $gpgkey         = 'absent',
+  $gpgkey_source  = '',
+  $gpgkey_name    = '',
   $failovermethod = 'absent',
   $priority       = 99,
   $exclude        = 'absent',
@@ -23,6 +25,24 @@ define yum::managed_yumrepo (
     group   => 0,
   }
 
+  $gpgkey_real_name = $gpgkey_name ? {
+    ''      => url_parse($gpgkey_source,'filename'),
+    default => $gpgkey_name,
+  }
+
+  if $gpgkey_source != '' {
+    if ! defined(File["/etc/pki/rpm-gpg/${gpgkey_real_name}"]) {
+      file { "/etc/pki/rpm-gpg/${gpgkey_real_name}":
+        ensure  => file,
+        replace => false,
+        before  => Yumrepo[ $name ],
+        source  => $gpgkey_source,
+        mode    => '0644',
+        owner   => 'root',
+        group   => 0,
+      }
+    }
+  }
   yumrepo { $name:
     descr          => $descr,
     baseurl        => $baseurl,
@@ -34,7 +54,6 @@ define yum::managed_yumrepo (
     priority       => $priority,
     exclude        => $exclude,
     includepkgs    => $includepkgs,
-    require        => File[ 'rpm_gpg' ],
   }
 
   if $autokeyimport == 'yes' and $gpgkey != '' {

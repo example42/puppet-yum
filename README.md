@@ -42,12 +42,21 @@ This module requires functions provided by the Example42 Puppi module.
         }
 
 
-* Do no include any repo 
+* Do not include any extra repo (By default EPEL is added)
 
         class { 'yum':
           extrarepo => '' ,
         }
 
+* Automatically copy in /etc/pki/rpm-gpg  all the rpm-gpg keys known by the yum module (this was the "old" and intrusive behaviour, now each rpm-gpg key may be individually provided by the yum::manages_repos' gpgkey_source parameter)
+
+        class { 'yum':
+          install_all_keys => true ,
+        }
+
+* Include a selected extra repo
+
+        include yum::repo::puppetlabs
 
 
 ## USAGE - Overrides and Customizations

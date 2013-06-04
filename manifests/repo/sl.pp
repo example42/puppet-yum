@@ -10,6 +10,7 @@ class yum::repo::sl {
     enabled    => 1,
     gpgcheck   => 1,
     gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-dawson',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-sl',
   }
 
   yum::managed_yumrepo { 'sl6x-security':
