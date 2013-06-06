@@ -4,6 +4,8 @@
 #
 class yum::repo::epel {
 
+  $osver = split($::operatingsystemrelease, '[.]')
+
   yum::managed_yumrepo { 'epel':
     descr          => 'Extra Packages for Enterprise Linux $releasever - $basearch',
     mirrorlist     => 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&arch=$basearch',
@@ -11,7 +13,7 @@ class yum::repo::epel {
     gpgcheck       => 1,
     failovermethod => 'priority',
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL',
-    gpgkey_source  => "puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-EPEL-${yum::osver[0]}",
+    gpgkey_source  => "puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-EPEL-${osver[0]}",
     priority       => 16,
   }
 
