@@ -7,7 +7,7 @@ class yum::repo::nginx {
 
   yum::managed_yumrepo { 'nginx':
     descr => 'Nginx official release packages',
-    baseurl => 'http://nginx.org/packages/rhel/${osver[0]}/$basearch/',
+    baseurl => "http://nginx.org/packages/rhel/${osver[0]}/\$basearch/",
     enabled => 1,
     gpgcheck => 0,
     priority => 1,
