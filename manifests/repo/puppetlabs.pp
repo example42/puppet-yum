@@ -16,7 +16,7 @@ class yum::repo::puppetlabs {
     gpgcheck => 1,
     failovermethod => 'priority',
     gpgkey => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
-    priority => 15,
+    priority => 1,
   }
 
   # The dependencies repo has the same priority as base, because it needs to override
