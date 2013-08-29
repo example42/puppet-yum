@@ -1,5 +1,5 @@
 name    'example42-yum'
-version '2.0.0'
+version '2.1.1'
 author  'Alessandro Franceschi'
 license 'Apache2'
 project_page 'http://www.example42.com'
