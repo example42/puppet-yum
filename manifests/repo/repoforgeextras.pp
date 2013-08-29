@@ -11,7 +11,7 @@ class yum::repo::repoforgeextras {
     gpgcheck => 1,
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
     priority => 1,
-    exclude  => 'perl-IO-Compress-*',
+    exclude  => 'perl-IO-Compress-* perl-DBD-MySQL',
   }
 
 }
