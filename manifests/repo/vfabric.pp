@@ -10,7 +10,7 @@ class yum::repo::vfabric {
     enabled        => 1,
     gpgcheck       => 1,
     failovermethod => 'priority',
-    gpgkey         => 'http://repo.vmware.com/pub/rhel${osver[0]}/vfabric/5.2/RPM-GPG-KEY-VFABRIC-5.2-EL${osver[0]}'
+    gpgkey         => 'http://repo.vmware.com/pub/rhel${osver[0]}/vfabric/5.2/RPM-GPG-KEY-VFABRIC-5.2-EL${osver[0]}',
     priority       => 1,
   }
 
