@@ -4,7 +4,11 @@
 #
 class yum::repo::epel {
 
-  $osver = split($::operatingsystemrelease, '[.]')
+  if $::operatingsystem == 'Amazon' {
+    $osver = [ '6' ]
+  } else {
+    $osver = split($::operatingsystemrelease, '[.]')
+  }
 
   yum::managed_yumrepo { 'epel':
     descr          => "Extra Packages for Enterprise Linux ${osver[0]} - \$basearch",
