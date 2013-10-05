@@ -4,7 +4,7 @@
 #
 class yum::repo::passenger {
 
-  yum::managed_yumrepo { passenger:
+  yum::managed_yumrepo { 'passenger':
     descr          => 'Red Hat Enterprise $releasever - Phusion Passenger',
     baseurl        => 'http://passenger.stealthymonkeys.com/rhel/$releasever/$basearch',
     mirrorlist     => 'http://passenger.stealthymonkeys.com/rhel/mirrors',

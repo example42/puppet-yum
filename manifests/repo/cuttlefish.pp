@@ -4,7 +4,7 @@
 #
 class yum::repo::cuttlefish {
 
-  yum::managed_yumrepo { cuttlefish:
+  yum::managed_yumrepo { 'cuttlefish':
     descr          => 'Ceph cuttlefish repository',
     baseurl        => 'http://ceph.com/rpm-cuttlefish/$releasever/$basearch',
     enabled        => 1,

@@ -5,13 +5,13 @@
 class yum::repo::centos5 {
 
   yum::managed_yumrepo { 'base':
-    descr      => 'CentOS-$releasever - Base',
-    mirrorlist => 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os',
-    enabled    => 1,
-    gpgcheck   => 1,
-    gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5',
+    descr          => 'CentOS-$releasever - Base',
+    mirrorlist     => 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os',
+    enabled        => 1,
+    gpgcheck       => 1,
+    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5',
     gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-CentOS-5',
-    priority   => 1,
+    priority       => 1,
   }
 
   yum::managed_yumrepo { 'updates':
