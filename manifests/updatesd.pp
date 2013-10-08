@@ -1,15 +1,15 @@
 # Class yum::updatesd
 #
 # Installs and enables yum updatesd
-# 
+#
 #
 class yum::updatesd {
 
   require yum
 
   package { 'yum-updatesd':
-    name   => 'yum-updatesd',
     ensure => present,
+    name   => 'yum-updatesd',
   }
 
   service { 'yum-updatesd':

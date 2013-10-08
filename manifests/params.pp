@@ -1,3 +1,5 @@
+# = Class yum::params
+#
 class yum::params  {
 
   $install_all_keys = false
@@ -15,7 +17,7 @@ class yum::params  {
   $source_repo_dir = undef
 
   $repo_dir = '/etc/yum.repos.d'
-  
+
   $config_dir = '/etc/yum'
 
   $config_file = '/etc/yum.conf'

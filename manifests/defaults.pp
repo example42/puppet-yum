@@ -12,21 +12,21 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::extrarepo =~ /jpackage5/ { include yum::repo::jpackage5 }
   if $yum::extrarepo =~ /jpackage6/ { include yum::repo::jpackage6 }
   if $yum::extrarepo =~ /remi/ { include yum::repo::remi }
-  if $yum::extrarepo =~ /tmz/ and $osver[0] != "4" { include yum::repo::tmz }
+  if $yum::extrarepo =~ /tmz/ and $osver[0] != '4' { include yum::repo::tmz }
   if $yum::extrarepo =~ /webtatic/ { include yum::repo::webtatic }
-  if $yum::extrarepo =~ /puppetlabs/ and $osver[0] != "4" { include yum::repo::puppetlabs }
-  if $yum::extrarepo =~ /puppetdevel/ and $osver[0] != "4" { include yum::repo::puppetdevel }
-  if $yum::extrarepo =~ /nginx/ and $osver[0] != "4" { include yum::repo::nginx }
-  if $yum::extrarepo =~ /mongodb/ and $osver[0] != "4" { include yum::repo::mongodb }
+  if $yum::extrarepo =~ /puppetlabs/ and $osver[0] != '4' { include yum::repo::puppetlabs }
+  if $yum::extrarepo =~ /puppetdevel/ and $osver[0] != '4' { include yum::repo::puppetdevel }
+  if $yum::extrarepo =~ /nginx/ and $osver[0] != '4' { include yum::repo::nginx }
+  if $yum::extrarepo =~ /mongodb/ and $osver[0] != '4' { include yum::repo::mongodb }
   if $yum::extrarepo =~ /repoforge/ { include yum::repo::repoforge }
   if $yum::extrarepo =~ /repoforgeextras/ { include yum::repo::repoforgeextras }
 
   if $yum::bool_defaultrepo {
     case $operatingsystem {
       centos: {
-        if $osver[0] == "6" { include yum::repo::centos6 }
-        if $osver[0] == "5" { include yum::repo::centos5 }
-        if $osver[0] == "4" { include yum::repo::centos4 }
+        if $osver[0] == '6' { include yum::repo::centos6 }
+        if $osver[0] == '5' { include yum::repo::centos5 }
+        if $osver[0] == '4' { include yum::repo::centos4 }
         if $yum::extrarepo =~ /centos-testing/ { include yum::repo::centos_testing }
         if $yum::extrarepo =~ /karan/ { include yum::repo::karan }
         if $yum::extrarepo =~ /atomic/ { include yum::repo::atomic }

@@ -1,3 +1,5 @@
+# = Class yum::prerequisites
+#
 class yum::prerequisites {
 
   require yum
@@ -7,15 +9,11 @@ class yum::prerequisites {
 
   if $yum::bool_install_all_keys == true {
     file { 'rpm_gpg':
-      path   => '/etc/pki/rpm-gpg/',
-      source => "puppet:///modules/yum/${operatingsystem}.${yum::osver[0]}/rpm-gpg/",
+      path     => '/etc/pki/rpm-gpg/',
+      source   => "puppet:///modules/yum/${operatingsystem}.${yum::osver[0]}/rpm-gpg/",
       recurse => true,
-  #    purge   => $yum::bool_clean_repos ? {
-  #      true  => true,
-  #      false => false,
-  #    },
       ignore  => '.svn',
-      mode    => 0644,
+      mode    => '0644',
       owner   => root,
       group   => 0,
     }

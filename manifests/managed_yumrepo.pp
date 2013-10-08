@@ -1,3 +1,5 @@
+# = Define yum::managed_yumrepo
+#
 define yum::managed_yumrepo (
   $descr          = 'absent',
   $baseurl        = 'absent',
