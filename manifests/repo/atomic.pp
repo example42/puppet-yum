@@ -1,6 +1,6 @@
-# = Class: yum::repo::remi
+# = Class: yum::repo::atomic
 #
-# This class installs the remi repo
+# This class installs the atomic repo
 #
 class yum::repo::atomic {
   yum::managed_yumrepo { 'atomic':
