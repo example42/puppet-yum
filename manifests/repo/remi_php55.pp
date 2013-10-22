@@ -1,32 +1,12 @@
-# = Class: yum::repo::remi
+# = Class: yum::repo::remi_php55
 #
-# This class installs the remi repo
+# This class installs the remi-php55 repo
 #
 class yum::repo::remi_php55 {
-  yum::managed_yumrepo { 'remi':
-    descr          => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch',
-    mirrorlist     => 'http://rpms.famillecollet.com/enterprise/$releasever/remi/mirror',
-    enabled        => 1,
-    gpgcheck       => 1,
-    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
-    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-remi',
-    priority       => 1,
-  }
-
   yum::managed_yumrepo { 'remi-php55':
-    descr          => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch',
+    descr          => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch - PHP 5.5',
     mirrorlist     => 'http://rpms.famillecollet.com/enterprise/$releasever/php55/mirror',
     enabled        => 1,
-    gpgcheck       => 1,
-    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
-    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-remi',
-    priority       => 1,
-  }
-
-  yum::managed_yumrepo { 'remi-test':
-    descr          => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch - Test',
-    mirrorlist     => 'http://rpms.famillecollet.com/enterprise/$releasever/test/mirror',
-    enabled        => 0,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
     gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-remi',
