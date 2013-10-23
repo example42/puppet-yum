@@ -5,7 +5,7 @@ class yum::prerequisites {
   require yum
 
   yum::plugin { 'priorities': }
-  yum::plugin { 'security': }
+#  yum::plugin { 'security': }
 
   if $yum::bool_install_all_keys == true {
     file { 'rpm_gpg':
