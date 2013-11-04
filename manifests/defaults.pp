@@ -35,7 +35,8 @@ class yum::defaults ( ) inherits yum::params {
       redhat: {
       }
       scientific: {
-        include yum::repo::sl
+        if $osver[0] == '6' { include yum::repo::sl6 }
+        if $osver[0] == '5' { include yum::repo::sl5 }
         if $yum::extrarepo =~ /centos-testing/ { include yum::repo::centos_testing }
         if $yum::extrarepo =~ /karan/ { include yum::repo::karan }
       }
