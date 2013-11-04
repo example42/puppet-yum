@@ -1,6 +1,6 @@
-# = Class: yum::repo::sl
+# = Class: yum::repo::sl6
 #
-# Base Scientific Linux repos
+# Base Scientific Linux 6 repos
 #
 # == Parameters:
 #
@@ -13,7 +13,7 @@
 #   Example: `http://mirror.example.com/pub/rpm/scientific`
 #   Default: `undef`
 #
-class yum::repo::sl (
+class yum::repo::sl6 (
   $mirror_url = undef,
 ) {
 
