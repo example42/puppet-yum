@@ -10,6 +10,6 @@ class yum::repo::openstack_grizzly {
     enabled        => 1,
     gpgcheck       => 0,
     failovermethod => 'priority',
-    priority       => 98,
+    priority       => 1,
   }
 }
