@@ -5,8 +5,8 @@
 class yum::repo::puppetlabs {
   $osver = split($::operatingsystemrelease, '[.]')
   $release = $::operatingsystem ? {
-    /(?i:Centos|RedHat)/ => $osver[0],
-    default              => '6',
+    /(?i:Centos|RedHat|Scientific)/ => $osver[0],
+    default                         => '6',
   }
 
   yum::managed_yumrepo { 'puppetlabs':
