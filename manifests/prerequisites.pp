@@ -8,7 +8,7 @@ class yum::prerequisites {
 #  yum::plugin { 'security': }
 
   if $protect != 'absent' {
-    if !defined Yum::Plugin['protectbase'] {
+    if ! defined(Yum::Plugin['protectbase']) {
       yum::plugin { 'protectbase': }
     }
   }
