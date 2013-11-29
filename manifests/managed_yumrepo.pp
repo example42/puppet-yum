@@ -11,6 +11,7 @@ define yum::managed_yumrepo (
   $gpgkey_name    = '',
   $failovermethod = 'absent',
   $priority       = 99,
+  $protect        = 'absent',
   $exclude        = 'absent',
   $autokeyimport  = 'no',
   $includepkgs    = 'absent') {
@@ -54,6 +55,7 @@ define yum::managed_yumrepo (
     gpgkey         => $gpgkey,
     failovermethod => $failovermethod,
     priority       => $priority,
+    protect        => $protect,
     exclude        => $exclude,
     includepkgs    => $includepkgs,
   }
