@@ -8,7 +8,9 @@ class yum::prerequisites {
 #  yum::plugin { 'security': }
 
   if $protect != 'absent' {
-    yum::plugin { 'protectbase': }
+    if !defined Yum::Plugin['protectbase'] {
+      yum::plugin { 'protectbase': }
+    }
   }
 
   if $yum::bool_install_all_keys == true {
