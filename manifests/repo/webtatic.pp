@@ -7,8 +7,8 @@ class yum::repo::webtatic {
   yum::managed_yumrepo { 'webtatic':
     descr          => 'Webtatic Repository $releasever - $basearch',
     mirrorlist     => $osver[0] ? {
-      5 => 'http://repo.webtatic.com/yum/centos/5/$basearch/debug/mirrorlist',
-      6 => 'http://repo.webtatic.com/yum/el6/$basearch/debug/mirrorlist',
+      5 => 'http://repo.webtatic.com/yum/centos/5/$basearch/mirrorlist',
+      6 => 'http://repo.webtatic.com/yum/el6/$basearch/mirrorlist',
     },
     enabled        => 1,
     gpgcheck       => 1,
