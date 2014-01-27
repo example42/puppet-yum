@@ -20,7 +20,8 @@ class yum::cron {
     ensure   => $yum::manage_file,
     path     => '/etc/sysconfig/yum-cron',
     content  => template($yum::cron_template),
-    require => Package['yum-cron'],
+    require  => Package['yum-cron'],
+    notify   => Service['yum-cron'],
   }
 
 }

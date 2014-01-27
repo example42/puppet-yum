@@ -193,7 +193,6 @@ class yum (
   $bool_puppi=any2bool($puppi)
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
-  $bool_update=any2bool($update)
 
   $osver = split($::operatingsystemrelease, '[.]')
 
@@ -241,6 +240,12 @@ class yum (
     default   => template($yum::template),
   }
 
+  $manage_updates = $yum::update ? {
+    'cron'     => true,
+    'updatesd' => true,
+    default    => false,
+  }
+
   file { 'yum.repo_dir':
     ensure  => directory,
     path    => $yum::repo_dir,
@@ -282,7 +287,7 @@ class yum (
   }
 
   ### Manage Automatic Updates
-  if $yum::bool_update {
+  if $yum::manage_updates {
     include $yum::update
   }
 
