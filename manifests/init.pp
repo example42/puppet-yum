@@ -178,7 +178,7 @@ class yum (
   $config_file_owner   = params_lookup( 'config_file_owner' ),
   $config_file_group   = params_lookup( 'config_file_group' ),
   $cron_template       = params_lookup( 'cron_template' ),
-  $cron_params         = params_lookup( 'cron_params' ),
+  $cron_param          = params_lookup( 'cron_param' ),
   $cron_mailto         = params_lookup( 'cron_mailto' ),
   $log_file            = params_lookup( 'log_file' )
   ) inherits yum::params {
