@@ -135,6 +135,18 @@
 # [*config_file_group*]
 #   Main configuration file path group
 #
+# [*cron_template*]
+#   config template for automatic updates
+#
+# [*cron_params*]
+#   Optional extra arguments for *YUM* ONLY
+#
+# [*cron_mailto*]
+#   Optional mail addres to send update reports for *YUM* only
+#
+# [*cron_dotw*]
+#   Days of the week to perform yum updates by cron
+#
 # [*log_file*]
 #   Log file(s). Used by puppi
 #
@@ -165,6 +177,9 @@ class yum (
   $config_file_mode    = params_lookup( 'config_file_mode' ),
   $config_file_owner   = params_lookup( 'config_file_owner' ),
   $config_file_group   = params_lookup( 'config_file_group' ),
+  $cron_template       = params_lookup( 'cron_template' ),
+  $cron_params         = params_lookup( 'cron_params' ),
+  $cron_mailto         = params_lookup( 'cron_mailto' ),
   $log_file            = params_lookup( 'log_file' )
   ) inherits yum::params {
 
@@ -178,6 +193,7 @@ class yum (
   $bool_puppi=any2bool($puppi)
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
+  $bool_update=any2bool($update)
 
   $osver = split($::operatingsystemrelease, '[.]')
 
@@ -191,7 +207,6 @@ class yum (
       },
     },
   }
-
 
   $manage_service_ensure = $yum::bool_disable ? {
     true    => 'stopped',
@@ -264,6 +279,11 @@ class yum (
       replace => $yum::manage_file_replace,
       audit   => $yum::manage_audit,
     }
+  }
+
+  ### Manage Automatic Updates
+  if $yum::bool_update {
+    include $yum::update
   }
 
   ### Include custom class if $my_class is set
