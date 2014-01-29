@@ -246,8 +246,6 @@ class yum (
     default    => false,
   }
 
-  notify { "Manage Update = $manage_updates ; Method = $yum::update": }
-
   file { 'yum.repo_dir':
     ensure  => directory,
     path    => $yum::repo_dir,
