@@ -180,6 +180,7 @@ class yum (
   $cron_template       = params_lookup( 'cron_template' ),
   $cron_param          = params_lookup( 'cron_param' ),
   $cron_mailto         = params_lookup( 'cron_mailto' ),
+  $cron_dotw           = params_lookup( 'cron_dotw' ),
   $log_file            = params_lookup( 'log_file' )
   ) inherits yum::params {
 
