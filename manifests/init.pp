@@ -27,6 +27,9 @@
 #   updatesd - Updates via updatesd (Only on Centos/RedHat/SL 5)
 #   false/no - Automatic updates disabled (Default)
 #
+# [*update_disable*]
+#   Set to true if you have enabled updates and now wish to disable
+#
 # [*defaultrepo*]
 #   If you want to enable default repositories for supported OS
 #   Default: true
@@ -153,6 +156,7 @@
 class yum (
   $install_all_keys    = params_lookup( 'install_all_keys' ),
   $update              = params_lookup( 'update' ),
+  $update_disable      = params_lookup( 'update_disable' ),
   $defaultrepo         = params_lookup( 'defaultrepo' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
   $plugins_source_dir  = params_lookup( 'plugins_source_dir' ),
@@ -177,7 +181,7 @@ class yum (
   $config_file_mode    = params_lookup( 'config_file_mode' ),
   $config_file_owner   = params_lookup( 'config_file_owner' ),
   $config_file_group   = params_lookup( 'config_file_group' ),
-  $cron_template       = params_lookup( 'cron_template' ),
+  $update_template     = params_lookup( 'update_template' ),
   $cron_param          = params_lookup( 'cron_param' ),
   $cron_mailto         = params_lookup( 'cron_mailto' ),
   $cron_dotw           = params_lookup( 'cron_dotw' ),

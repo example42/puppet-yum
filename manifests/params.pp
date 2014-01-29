@@ -31,13 +31,11 @@ class yum::params  {
   $log_file = '/var/log/yum.log'
 
   # parameters for the auto-update classes cron.pp/updatesd.pp
+  $update_disable = 'false'
+
   $update_template = ''
 
-  $update_interval = ''
-
   # The following two params are for cron.pp only
-
-  $cron_template = 'yum/yum-cron.erb'
 
   $cron_param = ''
 
