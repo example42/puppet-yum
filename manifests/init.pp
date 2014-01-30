@@ -29,6 +29,8 @@
 #
 # [*update_disable*]
 #   Set to true if you have enabled updates and now wish to disable
+#   Defaults to false.  Logic pertaining to this parameter is only applied
+#   when the update method parameter (immediately above) is set.
 #
 # [*defaultrepo*]
 #   If you want to enable default repositories for supported OS
@@ -138,17 +140,15 @@
 # [*config_file_group*]
 #   Main configuration file path group
 #
-# [*cron_template*]
-#   config template for automatic updates
-#
 # [*cron_params*]
-#   Optional extra arguments for *YUM* ONLY
+#   Optional extra arguments for $update = cron ONLY
 #
 # [*cron_mailto*]
-#   Optional mail addres to send update reports for *YUM* only
+#   Optional mail addres to send update reports for $update = cron ONLY 
 #
 # [*cron_dotw*]
 #   Days of the week to perform yum updates by cron
+#   0123456 (default)
 #
 # [*log_file*]
 #   Log file(s). Used by puppi
