@@ -33,7 +33,10 @@ class yum::params  {
   # parameters for the auto-update classes cron.pp/updatesd.pp
   $update_disable = 'false'
 
-  $update_template = ''
+  $update_template = $::operatingsystemrelease ? {
+    /6.*/ => 'yum/yum-cron.erb',
+    default => undef,
+  }
 
   # The following two params are for cron.pp only
 
