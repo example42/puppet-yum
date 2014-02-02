@@ -30,6 +30,22 @@ class yum::params  {
 
   $log_file = '/var/log/yum.log'
 
+  # parameters for the auto-update classes cron.pp/updatesd.pp
+  $update_disable = 'false'
+
+  $update_template = $::operatingsystemrelease ? {
+    /6.*/ => 'yum/yum-cron.erb',
+    default => undef,
+  }
+
+  # The following two params are for cron.pp only
+
+  $cron_param = ''
+
+  $cron_mailto = ''
+
+  $cron_dotw = '0123456'
+
   $source = ''
   $source_dir = ''
   $source_dir_purge = false

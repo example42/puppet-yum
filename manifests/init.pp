@@ -27,6 +27,11 @@
 #   updatesd - Updates via updatesd (Only on Centos/RedHat/SL 5)
 #   false/no - Automatic updates disabled (Default)
 #
+# [*update_disable*]
+#   Set to true if you have enabled updates and now wish to disable
+#   Defaults to false.  Logic pertaining to this parameter is only applied
+#   when the update method parameter (immediately above) is set.
+#
 # [*defaultrepo*]
 #   If you want to enable default repositories for supported OS
 #   Default: true
@@ -135,12 +140,23 @@
 # [*config_file_group*]
 #   Main configuration file path group
 #
+# [*cron_params*]
+#   Optional extra arguments for $update = cron ONLY
+#
+# [*cron_mailto*]
+#   Optional mail addres to send update reports for $update = cron ONLY 
+#
+# [*cron_dotw*]
+#   Days of the week to perform yum updates by cron
+#   0123456 (default)
+#
 # [*log_file*]
 #   Log file(s). Used by puppi
 #
 class yum (
   $install_all_keys    = params_lookup( 'install_all_keys' ),
   $update              = params_lookup( 'update' ),
+  $update_disable      = params_lookup( 'update_disable' ),
   $defaultrepo         = params_lookup( 'defaultrepo' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
   $plugins_source_dir  = params_lookup( 'plugins_source_dir' ),
@@ -165,6 +181,10 @@ class yum (
   $config_file_mode    = params_lookup( 'config_file_mode' ),
   $config_file_owner   = params_lookup( 'config_file_owner' ),
   $config_file_group   = params_lookup( 'config_file_group' ),
+  $update_template     = params_lookup( 'update_template' ),
+  $cron_param          = params_lookup( 'cron_param' ),
+  $cron_mailto         = params_lookup( 'cron_mailto' ),
+  $cron_dotw           = params_lookup( 'cron_dotw' ),
   $log_file            = params_lookup( 'log_file' )
   ) inherits yum::params {
 
@@ -191,7 +211,6 @@ class yum (
       },
     },
   }
-
 
   $manage_service_ensure = $yum::bool_disable ? {
     true    => 'stopped',
@@ -224,6 +243,12 @@ class yum (
   $manage_file_content = $yum::template ? {
     ''        => undef,
     default   => template($yum::template),
+  }
+
+  $manage_updates = $yum::update ? {
+    'cron'     => true,
+    'updatesd' => true,
+    default    => false,
   }
 
   file { 'yum.repo_dir':
@@ -264,6 +289,11 @@ class yum (
       replace => $yum::manage_file_replace,
       audit   => $yum::manage_audit,
     }
+  }
+
+  ### Manage Automatic Updates
+  if $yum::manage_updates {
+    include $yum::update
   }
 
   ### Include custom class if $my_class is set
