@@ -58,5 +58,6 @@ class yum::params  {
   $puppi_helper = 'standard'
   $debug = false
   $audit_only = false
+  $priorities_plugin = true
 
 }
