@@ -7,23 +7,23 @@ class yum::updatesd {
 
   require yum
 
-  $manage_update_package = $yum::update_disable ? {
-    'true'  => absent,
+  $manage_update_package = $yum::bool_update_disable ? {
+    true    => absent,
     default => present,
   }
 
-  $manage_update_service_ensure = $yum::update_disable ? {
-    'true'  => stopped,
+  $manage_update_service_ensure = $yum::bool_update_disable ? {
+    true    => stopped,
     default => running,
   }
 
-  $manage_update_service_enable = $yum::update_disable ? {
-    'true'  => false,
+  $manage_update_service_enable = $yum::bool_update_disable ? {
+    true    => false,
     default => true,
   }
 
-  $manage_update_file = $yum::update_disable ? {
-    'true'  => absent,
+  $manage_update_file = $yum::bool_update_disable ? {
+    true    => absent,
     default => present,
   }
 

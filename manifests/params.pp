@@ -31,7 +31,7 @@ class yum::params  {
   $log_file = '/var/log/yum.log'
 
   # parameters for the auto-update classes cron.pp/updatesd.pp
-  $update_disable = 'false'
+  $update_disable = false
 
   $update_template = $::operatingsystemrelease ? {
     /6.*/ => 'yum/yum-cron.erb',

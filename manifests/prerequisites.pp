@@ -7,12 +7,6 @@ class yum::prerequisites {
   yum::plugin { 'priorities': }
 #  yum::plugin { 'security': }
 
-  if $protect != 'absent' {
-    if ! defined(Yum::Plugin['protectbase']) {
-      yum::plugin { 'protectbase': }
-    }
-  }
-
   if $yum::bool_install_all_keys == true {
     file { 'rpm_gpg':
       path    => '/etc/pki/rpm-gpg/',

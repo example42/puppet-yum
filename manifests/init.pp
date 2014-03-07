@@ -144,7 +144,7 @@
 #   Optional extra arguments for $update = cron ONLY
 #
 # [*cron_mailto*]
-#   Optional mail addres to send update reports for $update = cron ONLY 
+#   Optional mail addres to send update reports for $update = cron ONLY
 #
 # [*cron_dotw*]
 #   Days of the week to perform yum updates by cron
@@ -198,6 +198,7 @@ class yum (
   $bool_puppi=any2bool($puppi)
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
+  $bool_update_disable=any2bool($update_disable)
 
   $osver = split($::operatingsystemrelease, '[.]')
 
