@@ -24,6 +24,7 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::extrarepo =~ /integ_ganeti/ { include yum::repo::integ_ganeti }
   if $yum::extrarepo =~ /elrepo/ { include yum::repo::elrepo }
   if $yum::extrarepo =~ /centalt/ { include yum::repo::centalt }
+  if $yum::extrarepo =~ /elastix/ { include yum::repo::elastix }
 
   if $yum::bool_defaultrepo {
     case $::operatingsystem {
