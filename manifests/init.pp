@@ -144,7 +144,7 @@
 #   Optional extra arguments for $update = cron ONLY
 #
 # [*cron_mailto*]
-#   Optional mail addres to send update reports for $update = cron ONLY 
+#   Optional mail addres to send update reports for $update = cron ONLY
 #
 # [*cron_dotw*]
 #   Days of the week to perform yum updates by cron

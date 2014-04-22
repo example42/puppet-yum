@@ -23,6 +23,9 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::extrarepo =~ /repoforgeextras/ { include yum::repo::repoforgeextras }
   if $yum::extrarepo =~ /integ_ganeti/ { include yum::repo::integ_ganeti }
   if $yum::extrarepo =~ /elrepo/ { include yum::repo::elrepo }
+  if $yum::extrarepo =~ /newrelic/ { include yum::repo::newrelic }
+  if $yum::extrarepo =~ /mod_pagespeed/ { include yum::repo::mod_pagespeed }
+  if $yum::extrarepo =~ /jenkins/ { include yum::repo::jenkins }
 
   if $yum::bool_defaultrepo {
     case $::operatingsystem {
