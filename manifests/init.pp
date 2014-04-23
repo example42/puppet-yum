@@ -144,7 +144,7 @@
 #   Optional extra arguments for $update = cron ONLY
 #
 # [*cron_mailto*]
-#   Optional mail addres to send update reports for $update = cron ONLY 
+#   Optional mail addres to send update reports for $update = cron ONLY
 #
 # [*cron_dotw*]
 #   Days of the week to perform yum updates by cron
@@ -190,7 +190,7 @@ class yum (
   $cron_mailto         = params_lookup( 'cron_mailto' ),
   $cron_dotw           = params_lookup( 'cron_dotw' ),
   $log_file            = params_lookup( 'log_file' ),
-  $priorities_plugin   = params_lookup( 'priorities_plugin' ),
+  $priorities_plugin   = params_lookup( 'priorities_plugin' )
   ) inherits yum::params {
 
   $bool_install_all_keys=any2bool($install_all_keys)
