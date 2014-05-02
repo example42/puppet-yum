@@ -153,6 +153,10 @@
 # [*log_file*]
 #   Log file(s). Used by puppi
 #
+# [*bool_priorities_plugin*]
+#   Boolean. If true, the priorities plugin will be installed automatically
+#   Default: true
+#
 class yum (
   $install_all_keys    = params_lookup( 'install_all_keys' ),
   $update              = params_lookup( 'update' ),
@@ -185,7 +189,8 @@ class yum (
   $cron_param          = params_lookup( 'cron_param' ),
   $cron_mailto         = params_lookup( 'cron_mailto' ),
   $cron_dotw           = params_lookup( 'cron_dotw' ),
-  $log_file            = params_lookup( 'log_file' )
+  $log_file            = params_lookup( 'log_file' ),
+  $priorities_plugin   = params_lookup( 'priorities_plugin' )
   ) inherits yum::params {
 
   $bool_install_all_keys=any2bool($install_all_keys)
@@ -198,6 +203,7 @@ class yum (
   $bool_puppi=any2bool($puppi)
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
+  $bool_priorities_plugin=any2bool($priorities_plugin)
   $bool_update_disable=any2bool($update_disable)
 
   $osver = split($::operatingsystemrelease, '[.]')

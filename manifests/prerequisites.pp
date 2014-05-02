@@ -4,7 +4,9 @@ class yum::prerequisites {
 
   require yum
 
-  yum::plugin { 'priorities': }
+  if $yum::bool_priorities_plugin == true {
+    yum::plugin { 'priorities': }
+  }
 #  yum::plugin { 'security': }
 
   if $yum::bool_install_all_keys == true {
