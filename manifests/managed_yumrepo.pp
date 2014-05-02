@@ -22,6 +22,12 @@ define yum::managed_yumrepo (
   # ensure that everything is setup
   include yum::prerequisites
 
+  if $protect != 'absent' {
+    if ! defined(Yum::Plugin['protectbase']) {
+      yum::plugin { 'protectbase': }
+    }
+  }
+
   file { "/etc/yum.repos.d/${name}.repo":
     ensure  => file,
     replace => false,

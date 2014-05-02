@@ -204,6 +204,7 @@ class yum (
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
   $bool_priorities_plugin=any2bool($priorities_plugin)
+  $bool_update_disable=any2bool($update_disable)
 
   $osver = split($::operatingsystemrelease, '[.]')
 
