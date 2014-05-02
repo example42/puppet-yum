@@ -12,7 +12,7 @@ class yum::repo::remi {
     gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-remi',
     priority       => 1,
   }
-  
+
   yum::managed_yumrepo { 'remi-test':
     descr          => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch - Test',
     mirrorlist     => 'http://rpms.famillecollet.com/enterprise/$releasever/test/mirror',

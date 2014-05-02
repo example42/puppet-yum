@@ -13,5 +13,4 @@ class yum::repo::newrelic {
     gpgkey        => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-NewRelic',
     gpgkey_source => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-NewRelic'
   }
-
 }
