@@ -28,6 +28,7 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::extrarepo =~ /jenkins/ { include yum::repo::jenkins }
   if $yum::extrarepo =~ /centalt/ { include yum::repo::centalt }
   if $yum::extrarepo =~ /elastix/ { include yum::repo::elastix }
+  if $yum::extrarepo =~ /mysql_community/ { include yum::repo::mysql_community }
 
   if $yum::bool_defaultrepo {
     case $::operatingsystem {
