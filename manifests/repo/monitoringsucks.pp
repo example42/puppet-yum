@@ -2,11 +2,13 @@
 #
 # This class installs the monitoringsucks repo
 #
-class yum::repo::monitoringsucks {
+class yum::repo::monitoringsucks (
+  $baseurl = 'http://pulp.inuits.eu/pulp/repos/monitoring',
+) {
 
   yum::managed_yumrepo { 'monitoringsucks':
     descr          => 'MonitoringSuck at Inuits',
-    baseurl        => 'http://pulp.inuits.eu/pulp/repos/monitoring',
+    baseurl        => $baseurl,
     enabled        => 1,
     gpgcheck       => 0,
     failovermethod => 'priority',
