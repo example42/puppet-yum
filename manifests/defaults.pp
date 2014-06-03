@@ -13,6 +13,7 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::extrarepo =~ /jpackage6/ { include yum::repo::jpackage6 }
   if $yum::extrarepo =~ /remi/ { include yum::repo::remi }
   if $yum::extrarepo =~ /remi_php55/ { include yum::repo::remi_php55 }
+  if $yum::extrarepo =~ /remi_php56/ { include yum::repo::remi_php56 }
   if $yum::extrarepo =~ /tmz/ and $osver[0] != '4' { include yum::repo::tmz }
   if $yum::extrarepo =~ /webtatic/ { include yum::repo::webtatic }
   if $yum::extrarepo =~ /puppetlabs/ and $osver[0] != '4' { include yum::repo::puppetlabs }
