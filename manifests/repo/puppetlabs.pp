@@ -2,20 +2,34 @@
 #
 # This class installs the puppetlabs repo
 #
-class yum::repo::puppetlabs {
+class yum::repo::puppetlabs (
+  $baseurl_products     = '',
+  $baseurl_dependencies = '',
+) {
   $osver = split($::operatingsystemrelease, '[.]')
   $release = $::operatingsystem ? {
     /(?i:Centos|RedHat|Scientific)/ => $osver[0],
     default                         => '6',
   }
 
+  $real_baseurl_products = $baseurl_products ? {
+    ''      => "http://yum.puppetlabs.com/el/${release}/products/\$basearch",
+    default => $baseurl_products,
+  }
+
+  $real_baseurl_dependencies = $baseurl_dependencies ? {
+    ''      => "http://yum.puppetlabs.com/el/${release}/dependencies/\$basearch",
+    default => $baseurl_dependencies,
+  }
+
   yum::managed_yumrepo { 'puppetlabs':
     descr          => 'Puppet Labs Packages',
-    baseurl        => "http://yum.puppetlabs.com/el/${release}/products/\$basearch",
+    baseurl        => $real_baseurl_products,
     enabled        => 1,
     gpgcheck       => 1,
     failovermethod => 'priority',
-    gpgkey         => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
+    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-PGDG',
     priority       => 1,
   }
 
@@ -25,11 +39,12 @@ class yum::repo::puppetlabs {
   #
   yum::managed_yumrepo { 'puppetlabs_dependencies':
     descr          => 'Puppet Labs Packages',
-    baseurl        => "http://yum.puppetlabs.com/el/${release}/dependencies/\$basearch",
+    baseurl        => $real_baseurl_dependencies,
     enabled        => 1,
     gpgcheck       => 1,
     failovermethod => 'priority',
-    gpgkey         => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
+    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-PGDG',
     priority       => 1,
   }
 

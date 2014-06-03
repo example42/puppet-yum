@@ -2,11 +2,13 @@
 #
 # This class installs the foreman repo
 #
-class yum::repo::foreman {
+class yum::repo::foreman (
+  $baseurl = 'http://yum.theforeman.org/stable/',
+) {
 
   yum::managed_yumrepo { 'foreman':
     descr          => 'Foreman Repo',
-    baseurl        => 'http://yum.theforeman.org/stable/',
+    baseurl        => $baseurl,
     enabled        => 1,
     gpgcheck       => 0,
     failovermethod => 'priority',
