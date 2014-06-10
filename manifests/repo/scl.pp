@@ -13,7 +13,7 @@ class yum::repo::scl (
   }
 
   $real_baseurl = $baseurl ? {
-    ''      => "http://dev.centos.org/centos/${release}/SCL/$basearch/",
+    ''      => "http://dev.centos.org/centos/${release}/SCL/\$basearch/",
     default => $baseurl,
   }
 
