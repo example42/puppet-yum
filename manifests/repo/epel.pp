@@ -25,10 +25,10 @@ class yum::repo::epel (
     )
   }
 
-  if $::operatingsystem == 'Amazon' {
-    $osver = [ '6' ]
-  } else {
-    $osver = split($::operatingsystemrelease, '[.]')
+  $osver = $::operatingsystem ? {
+    'Amazon'    => [ '6' ],
+    'XenServer' => [ '5' ],
+    default     => split($::operatingsystemrelease, '[.]')
   }
 
   $baseurl_epel = $mirror_url ? {
