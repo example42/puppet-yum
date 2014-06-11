@@ -49,6 +49,9 @@ class yum::defaults ( ) inherits yum::params {
         if 'centos-testing' in $yum::extrarepo { include yum::repo::centos_testing }
         if 'karan' in $yum::extrarepo { include yum::repo::karan }
       }
+      xenserver: {
+        include yum::repo::xenserver
+      }
       default: { }
     }
   }
