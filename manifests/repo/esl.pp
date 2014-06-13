@@ -3,7 +3,7 @@
 # This class installs the esl repo
 #
 class yum::repo::esl (
-  $baseurl = 'http://packages.esl.org/esl/1.0/centos',
+  $baseurl = 'http://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch',
 ) {
 
   yum::managed_yumrepo { 'esl':
