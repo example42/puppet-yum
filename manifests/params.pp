@@ -35,16 +35,32 @@ class yum::params  {
 
   $update_template = $::operatingsystemrelease ? {
     /6.*/ => 'yum/yum-cron.erb',
+    /7.*/ => 'yum/yum-cron-rhel7.erb',
     default => undef,
   }
 
-  # The following two params are for cron.pp only
+  $update_configuration_file = $::operatingsystemrelease ? {
+    /6.*/ => '/etc/sysconfig/yum-cron',
+    /7.*/ => '/etc/yum/yum-cron.conf',
+    default => undef,
+  }
 
-  $cron_param = ''
-
+  # The following param is for cron.pp and is used BOTH for version 6 and 7
   $cron_mailto = ''
 
+  # The following params are for cron.pp only for version 6
+
+  $cron_param = ''
   $cron_dotw = '0123456'
+
+  # The following params are for cron.pp only for version 7
+
+  $cron_update_cmd = 'default'
+  $cron_update_messages ='yes'
+  $cron_apply_updates = 'yes'
+  $cron_random_sleep = '360'
+  $cron_emit_via = 'stdio'
+  $cron_email_host = 'localhost'
 
   $source = ''
   $source_dir = ''
