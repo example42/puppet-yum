@@ -6,14 +6,6 @@ class yum::repo::rsyslog_v7 (
   $mirror_url = undef
 ) {
 
-  if $mirror_url {
-    validate_re(
-      $mirror_url,
-      '^(?:https?|ftp):\/\/[\da-zA-Z-][\da-zA-Z\.-]*\.[a-zA-Z]{2,6}\.?(?:\/[\w~-]*)*$',
-      '$mirror must be a Clean URL with no query-string, a fully-qualified hostname and no trailing slash.'
-    )
-  }
-
   $real_mirror_url = $mirror_url ? {
     default => $mirror_url,
     undef   => 'http://rpms.adiscon.com/v7-stable/epel-$releasever/$basearch'
@@ -29,5 +21,4 @@ class yum::repo::rsyslog_v7 (
     priority       => 10,
     failovermethod => 'priority',
   }
-
 }
