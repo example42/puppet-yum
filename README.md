@@ -111,6 +111,8 @@ This module requires functions provided by the Example42 Puppi module.
 
 ## OPERATING SYSTEMS SUPPORT
 
+REDHAT 7 - BETA
+
 REDHAT 6 - Full
 
 REDHAT 5 - Full
