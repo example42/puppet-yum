@@ -11,7 +11,8 @@ class yum::repo::logstash13 (
     baseurl        => $baseurl,
     enabled        => 1,
     gpgcheck       => 1,
-    gpgkey         => 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch',
+    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-elasticsearch',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-elasticsearch',
   }
 
 }
