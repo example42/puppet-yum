@@ -8,7 +8,7 @@ class yum::repo::puppetlabs (
 ) {
   $osver = split($::operatingsystemrelease, '[.]')
   $release = $::operatingsystem ? {
-    /(?i:Centos|RedHat|Scientific)/ => $osver[0],
+    /(?i:Centos|RedHat|Scientific|CloudLinux)/ => $osver[0],
     default                         => '6',
   }
 
