@@ -206,7 +206,10 @@ class yum (
   $bool_priorities_plugin=any2bool($priorities_plugin)
   $bool_update_disable=any2bool($update_disable)
 
-  $osver = split($::operatingsystemrelease, '[.]')
+  $osver = $::operatingsystem ? {
+    'XenServer' => [ '5' ],
+    default     => split($::operatingsystemrelease, '[.]')
+  }
 
   $manage_service_enable = $yum::bool_disableboot ? {
     true    => false,
