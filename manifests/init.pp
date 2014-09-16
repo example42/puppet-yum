@@ -189,6 +189,9 @@ class yum (
   $cron_param          = params_lookup( 'cron_param' ),
   $cron_mailto         = params_lookup( 'cron_mailto' ),
   $cron_dotw           = params_lookup( 'cron_dotw' ),
+  $updatesd_emit_via   = params_lookup( 'updatesd_emit_via' ),
+  $updatesd_email_from = params_lookup( 'updatesd_email_from' ),
+  $updatesd_email_to   = params_lookup( 'updatesd_email_to' ),
   $log_file            = params_lookup( 'log_file' ),
   $priorities_plugin   = params_lookup( 'priorities_plugin' )
   ) inherits yum::params {
