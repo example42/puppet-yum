@@ -10,7 +10,7 @@ define yum::versionlock (
   if ($name =~ /^[0-9]+:.+\*$/) {
     $manage_name = $name
   } elsif ($name =~ /^[0-9]+:.+-.+-.+\./) {
-    $manage_name= "${name}*"
+    $manage_name= $name
   } else {
     fail('Package name must be formated as \'EPOCH:NAME-VERSION-RELEASE.ARCH\'')
   }
