@@ -11,7 +11,8 @@ class yum::repo::esl (
     baseurl        => $baseurl,
     enabled        => 1,
     gpgcheck       => 0,
-    gpgkey         => 'http://packages.erlang-solutions.com/rpm/erlang_solutions.asc',
+    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-erlang_solutions',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-elasticsearch',
     priority       => 10,
   }
 
