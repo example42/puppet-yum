@@ -12,6 +12,8 @@ class yum::params  {
 
   $clean_repos = false
 
+  $plugins_source_dir = undef
+  
   $plugins_config_dir = '/etc/yum/pluginconf.d'
 
   $source_repo_dir = undef
