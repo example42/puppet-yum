@@ -63,7 +63,7 @@ class yum::params  {
   $cron_email_host = 'localhost'
 
   $source = ''
-  $source_dir = ''
+  $source_dir = undef
   $source_dir_purge = false
   $template = ''
   $options = ''
