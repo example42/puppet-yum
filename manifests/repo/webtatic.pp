@@ -22,5 +22,6 @@ class yum::repo::webtatic {
                         default => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-webtatic-andy',
                       },
     priority       => 1,
+    autokeyimport => 'yes',
   }
 }
