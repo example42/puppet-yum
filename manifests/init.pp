@@ -43,7 +43,7 @@
 #   (Epel is used by many modules)
 #   Note: This variable is ignored if you provide a custom source_repo_dir
 #
-# [*plugins_source_dir*]
+# [*plugins_config_dir*]
 #   The path of the plugins configuration directory
 #
 # [*repo_dir*]
@@ -163,7 +163,7 @@ class yum (
   $update_disable      = params_lookup( 'update_disable' ),
   $defaultrepo         = params_lookup( 'defaultrepo' ),
   $extrarepo           = params_lookup( 'extrarepo' ),
-  $plugins_source_dir  = params_lookup( 'plugins_source_dir' ),
+  $plugins_config_dir  = params_lookup( 'plugins_config_dir' ),
   $repo_dir            = params_lookup( 'repo_dir' ),
   $source_repo_dir     = params_lookup( 'source_repo_dir' ),
   $clean_repos         = params_lookup( 'clean_repos' ),
