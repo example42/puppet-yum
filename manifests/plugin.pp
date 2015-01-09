@@ -1,4 +1,4 @@
-# Define: pagios::plugin
+# Define: yum::plugin
 #
 # Adds a yum plugin
 #
