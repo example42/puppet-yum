@@ -153,6 +153,12 @@
 # [*log_file*]
 #   Log file(s). Used by puppi
 #
+# [*persist_dir*]
+#   Persistent information store directory path
+#
+# [*cache_dir*]
+#   cache and db files directory path
+#
 # [*bool_priorities_plugin*]
 #   Boolean. If true, the priorities plugin will be installed automatically
 #   Default: true
@@ -190,6 +196,10 @@ class yum (
   $cron_mailto         = params_lookup( 'cron_mailto' ),
   $cron_dotw           = params_lookup( 'cron_dotw' ),
   $log_file            = params_lookup( 'log_file' ),
+  $manage_persist_dir  = params_lookup( 'manage_persist_dir' ),
+  $persist_dir         = params_lookup( 'persist_dir'),
+  $manage_cache_dir    = params_lookup( 'manage_cache_dir' ),
+  $cache_dir           = params_lookup( 'cache_dir'),
   $priorities_plugin   = params_lookup( 'priorities_plugin' )
   ) inherits yum::params {
 
@@ -205,6 +215,8 @@ class yum (
   $bool_audit_only=any2bool($audit_only)
   $bool_priorities_plugin=any2bool($priorities_plugin)
   $bool_update_disable=any2bool($update_disable)
+  $bool_manage_persist_dir=any2bool($manage_persist_dir)
+  $bool_manage_cache_dir=any2bool($manage_cache_dir)
 
   $osver = $::operatingsystem ? {
     'XenServer' => [ '5' ],
@@ -298,6 +310,29 @@ class yum (
       purge   => $yum::source_dir_purge,
       replace => $yum::manage_file_replace,
       audit   => $yum::manage_audit,
+    }
+  }
+
+  # set the premissions for the cache and persist dirs recursively
+  if $bool_manage_persist_dir {
+    file { 'yum.persist.dir':
+      ensure  => directory,
+      path    => $yum::persist_dir,
+      mode    => $yum::config_file_mode,
+      owner   => $yum::config_file_owner,
+      group   => $yum::config_file_group,
+      recurse => true,
+    }
+  }
+
+  if $bool_manage_cache_dir {
+    file { 'yum.cache.dir':
+      ensure  => directory,
+      path    => $yum::cache_dir,
+      mode    => $yum::config_file_mode,
+      owner   => $yum::config_file_owner,
+      group   => $yum::config_file_group,
+      recurse => true,
     }
   }
 
