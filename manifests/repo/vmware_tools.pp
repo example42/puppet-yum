@@ -1,5 +1,5 @@
 class yum::repo::vmware_tools (
-  $baseurl = 'http://packages.vmware.com/tools/esx/5.1latest/rhel$releasever/$basearch',
+  $baseurl = 'http://packages.vmware.com/tools/esx/latest/rhel$releasever/$basearch',
 ) {
 
   yum::managed_yumrepo { 'vmware-tools':
