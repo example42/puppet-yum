@@ -51,19 +51,19 @@ class yum::repo::integ_ganeti (
   }
 
   yum::managed_yumrepo { 'integ-ganeti':
-    descr          => "Integ Ganeti Packages ${osver[0]} - \$basearch",
-    baseurl        => $baseurl_integ_ganeti,
-    enabled        => 1,
-    gpgcheck       => 0,
-    priority       => 15,
+    descr    => "Integ Ganeti Packages ${osver[0]} - \$basearch",
+    baseurl  => $baseurl_integ_ganeti,
+    enabled  => 1,
+    gpgcheck => 0,
+    priority => 15,
   }
 
   yum::managed_yumrepo { 'integ-ganeti-source':
-    descr          => "Integ Ganeti Packages ${osver[0]} - Source",
-    baseurl        => $baseurl_integ_ganeti_source,
-    enabled        => 0,
-    gpgcheck       => 0,
-    priority       => 15,
+    descr    => "Integ Ganeti Packages ${osver[0]} - Source",
+    baseurl  => $baseurl_integ_ganeti_source,
+    enabled  => 0,
+    gpgcheck => 0,
+    priority => 15,
   }
 
 }

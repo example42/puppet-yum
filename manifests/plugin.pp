@@ -43,12 +43,12 @@ define yum::plugin (
 
   if ( $source != '' ) {
     file { "yum_plugin_conf_${name}":
-      ensure  => $ensure,
-      path    => "${yum::plugins_config_dir}/${name}.conf",
-      owner   => root,
-      group   => root,
-      mode    => '0755',
-      source  => $source,
+      ensure => $ensure,
+      path   => "${yum::plugins_config_dir}/${name}.conf",
+      owner  => root,
+      group  => root,
+      mode   => '0755',
+      source => $source,
     }
   }
 }

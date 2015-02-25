@@ -1,3 +1,5 @@
+# class yum::repo::cdh5
+#
 class yum::repo::cdh5 (
   $baseurl = 'http://archive.cloudera.com/cdh5/redhat/6/x86_64/cdh/5/',
   $baseurl_extras = 'http://archive.cloudera.com/gplextras5/redhat/6/x86_64/gplextras/5/'

@@ -17,7 +17,7 @@ $osver = split($::operatingsystemrelease, '[.]')
       $baseurl = 'http://apt.sw.be/redhat/el5/en/$basearch/rpmforge'
       $mirrorlist = 'http://apt.sw.be/redhat/el5/en/mirrors-rpmforge'
     }
-    default: { fail("Unsupported version of Enterprise Linux") }
+    default: { fail('Unsupported version of Enterprise Linux') }
   }
   yum::managed_yumrepo { 'rpmforge':
     baseurl  => $baseurl,

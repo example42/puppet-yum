@@ -114,12 +114,12 @@ class yum::repo::xenserver (
   }
 
   yum::managed_yumrepo { 'Citrix':
-    descr          => "XenServer ${xenserver_base_release} updates",
-    mirrorlist     => "http://updates.vmd.citrix.com/XenServer/${xenserver_base_release}/domain0/mirrorlist",
-    enabled        => 1,
-    gpgcheck       => 1,
-    gpgkey         => 'http://updates.vmd.citrix.com/XenServer/RPM-GPG-KEY-6.2.0',
-    priority       => 1,
+    descr      => "XenServer ${xenserver_base_release} updates",
+    mirrorlist => "http://updates.vmd.citrix.com/XenServer/${xenserver_base_release}/domain0/mirrorlist",
+    enabled    => 1,
+    gpgcheck   => 1,
+    gpgkey     => 'http://updates.vmd.citrix.com/XenServer/RPM-GPG-KEY-6.2.0',
+    priority   => 1,
   }
 
 }

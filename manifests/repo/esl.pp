@@ -7,13 +7,13 @@ class yum::repo::esl (
 ) {
 
   yum::managed_yumrepo { 'esl':
-    descr          => 'Erlang Solutions',
-    baseurl        => $baseurl,
-    enabled        => 1,
-    gpgcheck       => 0,
-    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-erlang_solutions',
-    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-elasticsearch',
-    priority       => 10,
+    descr         => 'Erlang Solutions',
+    baseurl       => $baseurl,
+    enabled       => 1,
+    gpgcheck      => 0,
+    gpgkey        => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-erlang_solutions',
+    gpgkey_source => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-elasticsearch',
+    priority      => 10,
   }
 
 }
