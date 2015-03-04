@@ -45,11 +45,6 @@ class yum::repo::centos7 (
     default => "${mirror_url}/\$releasever/centosplus/\$basearch/",
   }
 
-  $baseurl_contrib = $mirror_url ? {
-    undef   => undef,
-    default => "${mirror_url}/\$releasever/contrib/\$basearch/",
-  }
-
   yum::managed_yumrepo { 'base':
     descr          => 'CentOS-$releasever - Base',
     baseurl        => $baseurl_base,
@@ -93,16 +88,6 @@ class yum::repo::centos7 (
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
     priority       => 2,
-  }
-
-  yum::managed_yumrepo { 'contrib':
-    descr          => 'CentOS-$releasever - Contrib',
-    baseurl        => $baseurl_contrib,
-    mirrorlist     => 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib',
-    failovermethod => 'priority',
-    gpgcheck       => 1,
-    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
-    priority       => 10,
   }
 
 }
