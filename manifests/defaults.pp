@@ -35,6 +35,7 @@ class yum::defaults ( ) inherits yum::params {
   if $yum::bool_defaultrepo {
     case $::operatingsystem {
       centos: {
+        if $osver[0] == '7' { include yum::repo::centos7 }
         if $osver[0] == '6' { include yum::repo::centos6 }
         if $osver[0] == '5' { include yum::repo::centos5 }
         if $osver[0] == '4' { include yum::repo::centos4 }
