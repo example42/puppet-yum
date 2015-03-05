@@ -7,30 +7,12 @@ class yum::defaults ( ) inherits yum::params {
 
   $osver = split($::operatingsystemrelease, '[.]')
 
-  if 'epel' in $yum::extrarepo { include yum::repo::epel }
-  if 'rpmforge' in $yum::extrarepo { include yum::repo::rpmforge }
-  if 'jpackage5' in $yum::extrarepo { include yum::repo::jpackage5 }
-  if 'jpackage6' in $yum::extrarepo { include yum::repo::jpackage6 }
-  if 'remi' in $yum::extrarepo { include yum::repo::remi }
-  if 'remi_php55' in $yum::extrarepo { include yum::repo::remi_php55 }
-  if 'remi_php56' in $yum::extrarepo { include yum::repo::remi_php56 }
-  if 'tmz' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::tmz }
-  if 'webtatic' in $yum::extrarepo { include yum::repo::webtatic }
-  if 'puppetlabs' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::puppetlabs }
-  if 'puppetdevel' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::puppetdevel }
-  if 'nginx' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::nginx }
-  if 'mongodb' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::mongodb }
-  if 'repoforge' in $yum::extrarepo { include yum::repo::repoforge }
-  if 'repoforgeextras' in $yum::extrarepo { include yum::repo::repoforgeextras }
-  if 'integ_ganeti' in $yum::extrarepo { include yum::repo::integ_ganeti }
-  if 'elrepo' in $yum::extrarepo { include yum::repo::elrepo }
-  if 'newrelic' in $yum::extrarepo { include yum::repo::newrelic }
-  if 'mod_pagespeed' in $yum::extrarepo { include yum::repo::mod_pagespeed }
-  if 'jenkins' in $yum::extrarepo { include yum::repo::jenkins }
-  if 'centalt' in $yum::extrarepo { include yum::repo::centalt }
-  if 'elastix' in $yum::extrarepo { include yum::repo::elastix }
-  if 'mysql_community' in $yum::extrarepo { include yum::repo::mysql_community }
-  if 'dell_omsa' in $yum::extrarepo { include yum::repo::dell_omsa }
+  define addrepo {
+    include "yum::repo::${name}"
+  }
+
+  # Include all the repos from the extrarepo configuarion.
+  addrepo { $yum::extrarepo: }
 
   if $yum::bool_defaultrepo {
     case $::operatingsystem {
