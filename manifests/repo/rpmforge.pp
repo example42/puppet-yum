@@ -1,6 +1,6 @@
 # = Class: yum::repo::rpmforge
 #
-# This class installs the rpmforce repo
+# This class installs the rpmforge repo
 #
 class yum::repo::rpmforge {
 $osver = split($::operatingsystemrelease, '[.]')
