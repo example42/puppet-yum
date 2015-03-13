@@ -54,7 +54,7 @@ class yum::repo::centos7 (
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
     gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-CentOS-7',
-    priority       => 1,
+    priority       => 2,
   }
 
   yum::managed_yumrepo { 'updates':
@@ -65,7 +65,7 @@ class yum::repo::centos7 (
     enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
-    priority       => 1,
+    priority       => 2,
   }
 
   yum::managed_yumrepo { 'extras':
@@ -76,7 +76,7 @@ class yum::repo::centos7 (
     enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
-    priority       => 1,
+    priority       => 2,
   }
 
   yum::managed_yumrepo { 'centosplus':
@@ -87,7 +87,7 @@ class yum::repo::centos7 (
     enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
-    priority       => 2,
+    priority       => 3,
   }
 
 }
