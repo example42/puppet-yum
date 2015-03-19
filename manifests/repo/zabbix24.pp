@@ -1,6 +1,6 @@
-# = Class: yum::repo::zabbix22
+# = Class: yum::repo::zabbix24
 #
-# This class installs the zabbix 2.2 repo
+# This class installs the zabbix 2.4 repo
 #
 class yum::repo::zabbix24 {
   yum::managed_yumrepo { 'zabbix24':
