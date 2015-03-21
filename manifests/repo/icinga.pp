@@ -1,6 +1,6 @@
 # = Class: yum::repo::icinga
 #
-# This class installs the foreman repo
+# This class installs the icinga repo
 #
 class yum::repo::icinga (
   $baseurl = 'http://packages.icinga.org/epel/$releasever/release/',
@@ -11,8 +11,10 @@ class yum::repo::icinga (
     baseurl        => $baseurl,
     enabled        => 1,
     gpgcheck       => 1,
-    failovermethod => 'priority',
-    gpgkey         => 'http://packages.icinga.org/icinga.key',
+    gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-icinga',
+    gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-icinga',
     priority       => 1,
+    failovermethod => 'priority',
   }
+
 }

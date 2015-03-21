@@ -20,6 +20,14 @@ class yum::params  {
 
   $repo_dir = '/etc/yum.repos.d'
 
+  $manage_persist_dir = false
+
+  $persist_dir = '/var/lib/yum'
+
+  $manage_cache_dir = false
+
+  $cache_dir = '/var/cache/yum'
+
   $config_dir = '/etc/yum'
 
   $config_file = '/etc/yum.conf'
