@@ -8,10 +8,10 @@ class yum::repo::devtools2 (
   require yum
 
   yum::managed_yumrepo { 'devtools2':
-    descr          => 'Devtools2 for CentOS',
-    baseurl        => $baseurl,
-    enabled        => 1,
-    gpgcheck       => 0,
-    priority       => 90,
+    descr    => 'Devtools2 for CentOS',
+    baseurl  => $baseurl,
+    enabled  => 1,
+    gpgcheck => 0,
+    priority => 90,
   }
 }

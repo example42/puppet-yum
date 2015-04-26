@@ -6,10 +6,10 @@ class yum::repo::cuda (
 ) {
 
   yum::managed_yumrepo { 'cuda':
-    descr          => 'NVIDIA Cuda for CentOS',
-    baseurl        => $baseurl,
-    enabled        => 1,
-    gpgcheck       => 0,
-    priority       => 90,
+    descr    => 'NVIDIA Cuda for CentOS',
+    baseurl  => $baseurl,
+    enabled  => 1,
+    gpgcheck => 0,
+    priority => 90,
   }
 }
