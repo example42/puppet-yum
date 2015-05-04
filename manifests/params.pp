@@ -72,6 +72,12 @@ class yum::params  {
   $cron_emit_via = 'stdio'
   $cron_email_host = 'localhost'
 
+  # The following params are for updatesd.pp
+
+  $updatesd_emit_via = 'dbus'
+  $updatesd_email_to = ''
+  $updatesd_email_from = ''
+
   $source = ''
   $source_dir = undef
   $source_dir_purge = false

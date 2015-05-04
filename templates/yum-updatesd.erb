@@ -1,3 +1,9 @@
+<% emit_via = scope.lookupvar('yum::updatesd_emit_via')
+   email_to = scope.lookupvar('yum::updatesd_email_to')
+   email_from = scope.lookupvar('yum::updatesd_email_from')
+
+   email_from = "yum-updatesd@#{fqdn}" if email_from.empty?
+-%>
 # File Managed by Puppet
 [main]
 # how often to check for new updates (in seconds)
@@ -6,9 +12,14 @@ run_interval = 3600
 updaterefresh = 600
 
 # how to send notifications (valid: dbus, email, syslog)
-emit_via = dbus
+emit_via = <%= emit_via %>
+<% if emit_via == 'email' -%>
+# email settings
+email_from = <%= email_from %>
+email_to = <%= email_to %>
+<% end -%>
 # should we listen via dbus to give out update information/check for
-# new updates 
+# new updates
 dbus_listener = yes
 
 # automatically install updates
@@ -17,4 +28,3 @@ do_update = yes
 do_download = no
 # automatically download deps of updates
 do_download_deps = no
-
