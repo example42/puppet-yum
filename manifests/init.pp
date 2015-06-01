@@ -195,6 +195,7 @@ class yum (
   $cron_param           = params_lookup( 'cron_param' ),
   $cron_mailto          = params_lookup( 'cron_mailto' ),
   $cron_dotw            = params_lookup( 'cron_dotw' ),
+  $cron_clean_dotw      = params_lookup( 'cron_clean_dotw' ),
   $cron_update_cmd      = params_lookup( 'cron_update_cmd' ),
   $cron_update_messages = params_lookup( 'cron_update_messages' ),
   $cron_apply_updates   = params_lookup( 'cron_apply_updates' ),
