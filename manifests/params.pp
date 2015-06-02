@@ -62,6 +62,7 @@ class yum::params  {
 
   $cron_param = ''
   $cron_dotw = '0123456'
+  $cron_clean_dotw = '0'
 
   # The following params are for cron.pp only for version 7
 
