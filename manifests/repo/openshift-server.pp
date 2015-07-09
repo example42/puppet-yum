@@ -5,8 +5,8 @@
 # when setting 'install_method' to 'none' in addition with 'yum::repo::epel' and 'yum::repo::jenkins' 
 #
 class yum::repo::openshift-server ($version=4) {
-  if $lsbdistrelease !~ /^6/ {
-    warning('This module works only for RHEL6')
+  if $operatingsystemrelease !~ /^6/ {
+    warning('The module \'Yum::Repo::Openshift-server\' works only for RHEL6')
   }
   yum::managed_yumrepo { 'openshift-origin':
     descr          => 'Openshift Origin',
