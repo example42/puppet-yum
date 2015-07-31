@@ -2,7 +2,7 @@
 #
 # This class installs the logstashforwarder (former lumberjack) repo.
 #
-class yum::repo::logstash14 (
+class yum::repo::logstashforwarder (
   $baseurl = 'http://packages.elasticsearch.org/logstashforwarder/centos',
 ) {
 
