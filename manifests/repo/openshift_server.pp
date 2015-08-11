@@ -4,8 +4,8 @@
 # Used for puppet-openshift_origin (https://github.com/openshift/puppet-openshift_origin)
 # when setting 'install_method' to 'none' in addition with 'yum::repo::epel' and 'yum::repo::jenkins' 
 #
-class yum::repo::openshift-server ($version=4) {
-  if $operatingsystemrelease !~ /^6/ {
+class yum::repo::openshift_server ($version=4) {
+  if $::operatingsystemrelease !~ /^6/ {
     warning('The module \'Yum::Repo::Openshift-server\' works only for RHEL6')
   }
   yum::managed_yumrepo { 'openshift-origin':
