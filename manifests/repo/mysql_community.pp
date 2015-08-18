@@ -26,7 +26,7 @@ class yum::repo::mysql_community(
     # Enable to use MySQL 5.5
     $enabled_55 = $enabled_version ? {
         '5.5' => '1',
-        default: '0',
+        default => '0',
     }
     yum::managed_yumrepo { 'mysql55-community':
       descr         => 'MySQL 5.5 Community Server',
@@ -40,7 +40,7 @@ class yum::repo::mysql_community(
     # Enable to use MySQL 5.6
     $enabled_56 = $enabled_version ? {
         '5.6' => '1',
-        default: '0',
+        default => '0',
     }
     yum::managed_yumrepo { 'mysql56-community':
       descr         => 'MySQL 5.6 Community Server',
@@ -55,7 +55,7 @@ class yum::repo::mysql_community(
     # Please read with sub pages: https://dev.mysql.com/doc/relnotes/mysql/5.7/en/
     $enabled_57 = $enabled_version ? {
         '5.7' => '1',
-        default: '0',
+        default => '0',
     }
     yum::managed_yumrepo { 'mysql57-community-dmr':
       descr         => 'MySQL 5.7 Community Server Development Milestone Release',
