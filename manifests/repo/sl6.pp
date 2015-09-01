@@ -49,6 +49,7 @@ class yum::repo::sl6 (
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-dawson',
     gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-sl',
+    priority       => 2,
   }
 
   yum::managed_yumrepo { 'sl6x-security':
@@ -59,6 +60,7 @@ class yum::repo::sl6 (
     enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-dawson',
+    priority       => 2,
   }
 
   yum::managed_yumrepo { 'sl6x-fastbugs':
@@ -69,6 +71,7 @@ class yum::repo::sl6 (
     enabled        => 0,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-dawson',
+    priority       => 2,
   }
 
 }
