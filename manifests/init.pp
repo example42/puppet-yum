@@ -308,7 +308,7 @@ class yum (
   }
 
   # The whole yum configuration directory can be recursively overriden
-  if $yum::source_dir {
+  if $yum::source_dir and $yum::source_dir != '' {
     file { 'yum.dir':
       ensure  => directory,
       path    => $yum::config_dir,
@@ -349,7 +349,7 @@ class yum (
   }
 
   ### Include custom class if $my_class is set
-  if $yum::my_class {
+  if $yum::my_class and $yum::my_class != '' {
     include $yum::my_class
   }
 
