@@ -280,17 +280,22 @@ class yum (
     default    => false,
   }
 
+  # XXX param_lookup returns '' instead of undef
+  $real_source_repo_dir = $yum::source_repo_dir ? {
+    ''      => undef,
+    default => $yum::source_repo_dir,
+  }
   file { 'yum.repo_dir':
     ensure  => directory,
     path    => $yum::repo_dir,
-    source  => $yum::source_repo_dir,
+    source  => $real_source_repo_dir,
     recurse => true,
     purge   => $yum::bool_clean_repos,
     replace => $yum::manage_file_replace,
     audit   => $yum::manage_audit,
   }
 
-  if $yum::source_repo_dir == undef {
+  if $real_source_repo_dir == undef {
     include yum::defaults
   }
 
