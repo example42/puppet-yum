@@ -14,7 +14,7 @@
 #   Default: `undef`
 #
 class yum::repo::epel (
-  $mirror_url = undef,
+  $mirror_url = undef
 ) {
 
   if $mirror_url {
