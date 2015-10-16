@@ -27,8 +27,8 @@ define yum::plugin (
   $ensure = bool2ensure( $enable )
 
   $yum_plugins_prefix = $yum::osver[0] ? {
-    5       => 'yum',
-    6       => 'yum-plugin',
+    '5'     => 'yum',
+    '6'     => 'yum-plugin',
     default => 'yum-plugin',
   }
 
