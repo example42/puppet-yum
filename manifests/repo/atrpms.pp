@@ -3,7 +3,7 @@
 # This class installs the atrpms repo
 #
 class yum::repo::atrpms (
-  $baseurl = 'http://dl.atrpms.net/el$releasever-$basearch/atrpms/stable',
+  $baseurl = 'https://www.mirrorservice.org/sites/dl.atrpms.net/el$releasever-$basearch/atrpms/stable',
 ) {
 
   yum::managed_yumrepo { 'centos5-atrpms':
