@@ -19,6 +19,7 @@ class yum::defaults ( ) inherits yum::params {
   if 'webtatic' in $yum::extrarepo { include yum::repo::webtatic }
   if 'puppetlabs' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::puppetlabs }
   if 'puppetdevel' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::puppetdevel }
+  if 'puppetlabs_collections' in $yum::extrarepo { include yum::repo::puppetlabs_collections }
   if 'nginx' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::nginx }
   if 'mongodb' in $yum::extrarepo and $osver[0] != '4' { include yum::repo::mongodb }
   if 'repoforge' in $yum::extrarepo { include yum::repo::repoforge }
