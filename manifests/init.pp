@@ -350,7 +350,7 @@ class yum (
 
   ### Manage Automatic Updates
   if $yum::manage_updates {
-    include $yum::update
+    include "::yum::${update}"
   }
 
   ### Include custom class if $my_class is set
