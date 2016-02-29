@@ -1,6 +1,6 @@
 {
   "name": "example42-yum",
-  "version": "2.1.25",
+  "version": "2.1.26",
   "summary": "Puppet module for yum",
   "author": "Alessandro Franceschi",
   "description": "This module installs and manages yum and several different yum repos",
