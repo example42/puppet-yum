@@ -5,6 +5,7 @@
 class yum::repo::puppetlabs_collections (
   $baseurl    = '',
   $collection = '1',
+  $priority   = 99,
 ) {
   $osver = $::operatingsystem ? {
     'XenServer' => [ '5' ],
@@ -28,6 +29,7 @@ class yum::repo::puppetlabs_collections (
     failovermethod => 'priority',
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
     gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+    priority       => $priority,
   }
 
 }
