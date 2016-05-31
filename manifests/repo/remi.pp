@@ -4,12 +4,11 @@
 #
 class yum::repo::remi {
   yum::managed_yumrepo { 'remi':
-    descr         => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch',
-    mirrorlist    => 'http://rpms.famillecollet.com/enterprise/$releasever/remi/mirror',
-    enabled       => 1,
-    gpgcheck      => 1,
-    gpgkey        => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
-    gpgkey_source => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-remi',
-    priority      => 1,
+    descr      => 'Remi\'s RPM repository for Enterprise Linux $releasever - $basearch',
+    mirrorlist => 'http://rpms.remirepo.net/enterprise/$releasever/remi/mirror',
+    enabled    => 1,
+    gpgcheck   => 1,
+    gpgkey     => 'http://rpms.remirepo.net/RPM-GPG-KEY-remi',
+    priority   => 1
   }
 }
