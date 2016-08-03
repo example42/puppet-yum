@@ -3,7 +3,7 @@
 # This class installs the remi-php55 repo
 #
 class yum::repo::remi_php55 {
-  $releasever = $::os['name'] ? {
+  $releasever = $::operatingsystem ? {
     /(?i:Amazon)/ => '6',
     default       => '$releasever',  # Yum var
   }
