@@ -3,7 +3,7 @@
 # This class installs the remi safe repo
 #
 class yum::repo::remi_safe {
-  $releasever = $::os['name'] ? {
+  $releasever = $::operatingsystem ? {
     /(?i:Amazon)/ => '6',
     default       => '$releasever',  # Yum var
   }

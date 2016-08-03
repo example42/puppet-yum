@@ -3,7 +3,7 @@
 # This class installs the remi-php70 repo
 #
 class yum::repo::remi_php70 {
-  $releasever = $::os['name'] ? {
+  $releasever = $::operatingsystem ? {
     /(?i:Amazon)/ => '6',
     default       => '$releasever',  # Yum var
   }
