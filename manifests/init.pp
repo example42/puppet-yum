@@ -296,7 +296,7 @@ class yum (
   }
 
   if $real_source_repo_dir == undef {
-    include yum::defaults
+    contain yum::defaults
   }
 
   # Yum Configuration file
@@ -350,12 +350,12 @@ class yum (
 
   ### Manage Automatic Updates
   if $yum::manage_updates {
-    include "::yum::${update}"
+    contain "::yum::${update}"
   }
 
   ### Include custom class if $my_class is set
   if $yum::my_class and $yum::my_class != '' {
-    include $yum::my_class
+    contain $yum::my_class
   }
 
 
