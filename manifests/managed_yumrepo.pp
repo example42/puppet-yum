@@ -24,7 +24,7 @@ define yum::managed_yumrepo (
   ) {
 
   # ensure that everything is setup
-  contain yum::prerequisites
+  include yum::prerequisites
 
   if $protect != 'absent' {
     if ! defined(Yum::Plugin['protectbase']) {
