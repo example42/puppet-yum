@@ -8,7 +8,7 @@ class yum::repo::repoforge {
 
   yum::managed_yumrepo { 'repoforge':
     descr         => 'RepoForge packages',
-    baseurl       => "http://apt.sw.be/redhat/el${osver[0]}/en/\$basearch/rpmforge",
+    baseurl       => "http://mirrorlist.repoforge.org/el${osver[0]}/en/\$basearch/rpmforge",
     enabled       => 1,
     gpgcheck      => 1,
     gpgkey        => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
