@@ -8,7 +8,7 @@ class yum::repo::repoforgeextras {
 
   yum::managed_yumrepo { 'repoforgeextras':
     descr    => 'RepoForge extra packages',
-    baseurl  => "http://apt.sw.be/redhat/el${osver[0]}/en/\$basearch/extras",
+    baseurl  => "http://mirrorlist.repoforge.org/el${osver[0]}/\$basearch/extras",
     enabled  => 1,
     gpgcheck => 1,
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
