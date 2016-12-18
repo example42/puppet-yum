@@ -24,7 +24,7 @@ define yum::managed_yumrepo (
   ) {
 
   # ensure that everything is setup
-  include yum::prerequisites
+  include ::yum::prerequisites
 
   if $protect != 'absent' {
     if ! defined(Yum::Plugin['protectbase']) {
@@ -80,7 +80,7 @@ define yum::managed_yumrepo (
       sslcacert       => $sslcacert,
       sslclientcert   => $sslclientcert,
       sslclientkey    => $sslclientkey,
-      sslverify       => $sslverify
+      sslverify       => $sslverify,
     }
 
     if $autokeyimport == 'yes' and $gpgkey != '' {

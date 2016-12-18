@@ -7,7 +7,7 @@ class yum::plugin::versionlock (
 ) {
 
   package { 'yum-plugin-versionlock':
-    ensure => $ensure
+    ensure => $ensure,
   }
 
   file { 'yum.versionlock.list':

@@ -5,7 +5,7 @@ define yum::versionlock (
   $path   = '/etc/yum/pluginconf.d/versionlock.list',
 ) {
 
-  include yum::plugin::versionlock
+  include ::yum::plugin::versionlock
 
   if ($name =~ /^[0-9]+:.+\*$/) {
     $manage_name = $name
@@ -19,6 +19,6 @@ define yum::versionlock (
     ensure  => $ensure,
     line    => $manage_name,
     path    => $path,
-    require => Class['yum::plugin::versionlock']
+    require => Class['yum::plugin::versionlock'],
   }
 }

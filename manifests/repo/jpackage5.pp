@@ -4,7 +4,7 @@
 #
 class yum::repo::jpackage5 {
 
-  include yum
+  include ::yum
 
   yum::managed_yumrepo { 'jpackage-generic-5.0':
     descr          => 'JPackage (free), generic',

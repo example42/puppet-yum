@@ -22,7 +22,7 @@ define yum::plugin (
   $enable       = true
   ) {
 
-  include yum
+    include ::yum
 
   $ensure = bool2ensure( $enable )
 
@@ -38,7 +38,7 @@ define yum::plugin (
   }
 
   package { $real_package_name :
-    ensure => $ensure
+    ensure => $ensure,
   }
 
   if ( $source != '' ) {

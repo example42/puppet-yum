@@ -14,6 +14,6 @@ class yum::repo::remi_test {
     enabled    => 1,
     gpgcheck   => 1,
     gpgkey     => 'http://rpms.remirepo.net/RPM-GPG-KEY-remi',
-    priority   => 1
+    priority   => 1,
   }
 }

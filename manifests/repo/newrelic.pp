@@ -13,6 +13,6 @@ class yum::repo::newrelic (
     gpgcheck      => 1,
     priority      => 1,
     gpgkey        => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-NewRelic',
-    gpgkey_source => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-NewRelic'
+    gpgkey_source => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-NewRelic',
   }
 }

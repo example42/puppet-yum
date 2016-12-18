@@ -296,7 +296,7 @@ class yum (
   }
 
   if $real_source_repo_dir == undef {
-    include yum::defaults
+    include ::yum::defaults
   }
 
   # Yum Configuration file
