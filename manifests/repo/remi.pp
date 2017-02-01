@@ -8,9 +8,19 @@ class yum::repo::remi {
     default       => '$releasever',  # Yum var
   }
 
+  $os = $::operatingsystem ? {
+    /(?i:Fedora)/ => 'fedora',
+    default       => 'enterprise',
+  }
+
+  $osname = $::operatingsystem ? {
+    /(?i:Fedora)/ => 'Fedora',
+    default       => 'Enterprise Linux',
+  }
+
   yum::managed_yumrepo { 'remi':
-    descr      => 'Remi\'s RPM repository for Enterprise Linux $releasever - $basearch',
-    mirrorlist => "http://rpms.remirepo.net/enterprise/${releasever}/remi/mirror",
+    descr      => "Remi's RPM repository for ${osname} \$releasever - \$basearch",
+    mirrorlist => "http://rpms.remirepo.net/${os}/${releasever}/remi/mirror",
     enabled    => 1,
     gpgcheck   => 1,
     gpgkey     => 'http://rpms.remirepo.net/RPM-GPG-KEY-remi',
