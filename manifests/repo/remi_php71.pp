@@ -8,9 +8,19 @@ class yum::repo::remi_php71 {
     default       => '$releasever',  # Yum var
   }
 
+  $os = $::operatingsystem ? {
+    /(?i:Fedora)/ => 'fedora',
+    default       => 'enterprise',
+  }
+
+  $osname = $::operatingsystem ? {
+    /(?i:Fedora)/ => 'Fedora',
+    default       => 'Enterprise Linux',
+  }
+
   yum::managed_yumrepo { 'remi-php71':
-    descr      => 'Remi\'s PHP 7.1 RPM repository for Enterprise Linux $releasever - $basearch',
-    mirrorlist => "http://rpms.remirepo.net/enterprise/${releasever}/php71/mirror",
+    descr      => "Remi's PHP 7.1 RPM repository for ${osname} \$releasever - \$basearch",
+    mirrorlist => "http://rpms.remirepo.net/${os}/${releasever}/php71/mirror",
     enabled    => 1,
     gpgcheck   => 1,
     gpgkey     => 'http://rpms.remirepo.net/RPM-GPG-KEY-remi',
