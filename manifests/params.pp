@@ -44,14 +44,14 @@ class yum::params  {
   $update_disable = false
 
   $update_template = $::operatingsystemrelease ? {
-    /6.*/ => 'yum/yum-cron.erb',
-    /7.*/ => 'yum/yum-cron-rhel7.erb',
+    /^6.*/ => 'yum/yum-cron.erb',
+    /^7.*/ => 'yum/yum-cron-rhel7.erb',
     default => undef,
   }
 
   $update_configuration_file = $::operatingsystemrelease ? {
-    /6.*/ => '/etc/sysconfig/yum-cron',
-    /7.*/ => '/etc/yum/yum-cron.conf',
+    /^6.*/ => '/etc/sysconfig/yum-cron',
+    /^7.*/ => '/etc/yum/yum-cron.conf',
     default => undef,
   }
 
