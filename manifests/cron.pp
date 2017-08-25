@@ -29,7 +29,6 @@ class yum::cron {
 
   service { 'yum-cron':
     ensure     => $manage_update_service_ensure,
-    name       => $yum::service,
     enable     => $manage_update_service_enable,
     hasstatus  => true,
     hasrestart => true,
