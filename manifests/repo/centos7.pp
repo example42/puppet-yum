@@ -84,7 +84,6 @@ class yum::repo::centos7 (
     baseurl        => $baseurl_centosplus,
     mirrorlist     => 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus',
     failovermethod => 'priority',
-    enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7',
     priority       => 3,
